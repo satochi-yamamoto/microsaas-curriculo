@@ -23,9 +23,12 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const openAiKey = import.meta.env.VITE_OPENAI_TOKEN;
   const deepSeekKey = import.meta.env.VITE_DEEPSEEK_TOKEN;
+  const copilotKey = import.meta.env.VITE_GITHUB_COPILOT_TOKEN;
 
-  const apiKey = openAiKey || deepSeekKey;
+  const apiKey = openAiKey || deepSeekKey || copilotKey;
   const isOpenAI = Boolean(openAiKey);
+  const isDeepSeek = !isOpenAI && Boolean(deepSeekKey);
+  const isCopilot = !isOpenAI && !isDeepSeek && Boolean(copilotKey);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,16 +51,18 @@ O currículo deve incluir as seguintes seções:
     try {
       const endpoint = isOpenAI
         ? 'https://api.openai.com/v1/chat/completions'
-        : 'https://api.deepseek.com/v1/chat/completions';
+        : isDeepSeek
+          ? 'https://api.deepseek.com/v1/chat/completions'
+          : 'https://api.github.com/copilot/v1/chat/completions';
 
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
+          'Authorization': isCopilot ? `token ${apiKey}` : `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-          model: isOpenAI ? 'gpt-3.5-turbo' : 'deepseek-chat',
+          model: isOpenAI ? 'gpt-3.5-turbo' : isDeepSeek ? 'deepseek-chat' : 'github-copilot-chat',
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.7,
         })
