@@ -26,14 +26,6 @@ function HomePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.nomeCompleto.trim() || !formData.cargoDesejado.trim() || formData.tecnologias.length === 0) {
-      toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha o nome completo, o cargo desejado e adicione ao menos uma tecnologia.",
-        variant: "destructive"
-      });
-      return;
-    }
 
     setIsLoading(true);
 
