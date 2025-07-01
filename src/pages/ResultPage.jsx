@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
@@ -6,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { AdBanner } from '@/components/AdBanner';
 import { useToast } from '@/components/ui/use-toast';
+import { ResumePreview } from '@/components/ResumePreview';
 import { Download, CheckCircle, ArrowLeft, FileText } from 'lucide-react';
 
 function ResultPage() {
@@ -24,9 +24,12 @@ function ResultPage() {
 
   const handleDownload = () => {
     toast({
-      title: "🚧 Funcionalidade em desenvolvimento",
-      description: "O download do PDF será implementado em breve! Solicite esta funcionalidade no próximo prompt! 🚀"
+      title: "Preparando para impressão...",
+      description: "Seu currículo será aberto na janela de impressão para salvar como PDF."
     });
+    setTimeout(() => {
+      window.print();
+    }, 500);
   };
 
   const handleNewCurriculo = () => {
@@ -47,7 +50,6 @@ function ResultPage() {
 
       <div className="min-h-screen py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Banner Cabeçalho */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,17 +63,14 @@ function ResultPage() {
             />
           </motion.div>
 
-          {/* Conteúdo Principal */}
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Coluna Principal */}
             <div className="lg:col-span-2">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="glass-effect rounded-2xl p-8 text-center"
+                className="glass-effect rounded-2xl p-8"
               >
-                {/* Ícone de Sucesso */}
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -84,12 +83,11 @@ function ResultPage() {
                   </div>
                 </motion.div>
 
-                {/* Mensagem de Sucesso */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mb-8"
+                  className="mb-8 text-center"
                 >
                   <h1 className="text-4xl md:text-5xl font-bold mb-4">
                     <span className="gradient-text">Currículo Gerado</span>
@@ -100,23 +98,15 @@ function ResultPage() {
                   <p className="text-xl text-gray-300 mb-6">
                     Seu currículo profissional foi criado usando IA e está pronto para download!
                   </p>
-
-                  <div className="bg-white/5 rounded-lg p-4 mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-2">Dados do Currículo:</h3>
-                    <div className="text-left space-y-2 text-gray-300">
-                      <p><strong>Nome:</strong> {curriculoData.nomeCompleto}</p>
-                      <p><strong>Cargo:</strong> {curriculoData.cargoDesejado}</p>
-                      <p><strong>Tecnologias:</strong> {curriculoData.tecnologias.join(', ')}</p>
-                    </div>
-                  </div>
                 </motion.div>
 
-                {/* Botão de Download */}
+                {curriculoData && <ResumePreview data={curriculoData} />}
+
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
-                  className="space-y-4"
+                  className="mt-8 space-y-4 text-center"
                 >
                   <Button
                     onClick={handleDownload}
@@ -152,7 +142,6 @@ function ResultPage() {
               </motion.div>
             </div>
 
-            {/* Coluna Lateral - Banner */}
             <div className="lg:col-span-1">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -169,7 +158,6 @@ function ResultPage() {
             </div>
           </div>
 
-          {/* Dicas e Informações */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -202,7 +190,6 @@ function ResultPage() {
           </motion.div>
         </div>
 
-        {/* Banner Rodapé Fixo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

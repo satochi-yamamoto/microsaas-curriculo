@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
@@ -22,38 +21,75 @@ function HomePage() {
     experiencias: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const apiKey = "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";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.nomeCompleto || !formData.cargoDesejado || formData.tecnologias.length === 0) {
+    if (!formData.nomeCompleto.trim() || !formData.cargoDesejado.trim() || formData.tecnologias.length === 0) {
       toast({
         title: "Campos obrigatórios",
-        description: "Por favor, preencha todos os campos obrigatórios.",
+        description: "Por favor, preencha o nome completo, o cargo desejado e adicione ao menos uma tecnologia.",
         variant: "destructive"
       });
       return;
     }
 
     setIsLoading(true);
+
+    const prompt = `Crie um currículo para um profissional de tecnologia com base nas seguintes informações. Formate a saída em Markdown, utilizando títulos (###) para as seções e listas com marcadores (*) para itens.
+
+**Nome:** ${formData.nomeCompleto}
+**Cargo Desejado:** ${formData.cargoDesejado}
+**Tecnologias:** ${formData.tecnologias.join(', ')}
+**Experiência:** ${formData.experiencias}
+
+O currículo deve incluir as seguintes seções:
+1.  **Resumo Profissional:** Um parágrafo conciso e impactante.
+2.  **Tecnologias:** Uma lista de tecnologias mencionadas.
+3.  **Experiência Profissional:** Formate a experiência fornecida em um estilo profissional, usando bullet points para destacar responsabilidades e conquistas.`;
     
     try {
-      // Simular chamada para API
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [{ role: 'user', content: prompt }],
+          temperature: 0.7,
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('OpenAI API Error:', errorData);
+        throw new Error(`Falha na API da OpenAI: ${errorData.error.message}`);
+      }
+
+      const data = await response.json();
+      const generatedContent = data.choices[0].message.content;
       
-      // Salvar dados no localStorage para a próxima página
-      localStorage.setItem('curriculoData', JSON.stringify(formData));
+      const curriculoCompleto = {
+        ...formData,
+        generatedContent: generatedContent
+      };
+
+      localStorage.setItem('curriculoData', JSON.stringify(curriculoCompleto));
       
       toast({
         title: "Sucesso!",
-        description: "Seu currículo está sendo gerado..."
+        description: "Seu currículo foi gerado com sucesso!"
       });
       
       navigate('/curriculo-gerado');
     } catch (error) {
+      console.error(error);
       toast({
         title: "Erro",
-        description: "Ocorreu um erro ao gerar o currículo. Tente novamente.",
+        description: `Ocorreu um erro ao gerar o currículo: ${error.message}`,
         variant: "destructive"
       });
     } finally {
@@ -74,7 +110,6 @@ function HomePage() {
 
       <div className="min-h-screen py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Banner Superior */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -88,7 +123,6 @@ function HomePage() {
             />
           </motion.div>
 
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -129,7 +163,6 @@ function HomePage() {
             </div>
           </motion.div>
 
-          {/* Formulário */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -197,7 +230,6 @@ function HomePage() {
                 />
               </div>
 
-              {/* Banner Meio */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -232,7 +264,6 @@ function HomePage() {
             </form>
           </motion.div>
 
-          {/* Features */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
