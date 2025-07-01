@@ -21,19 +21,11 @@ function HomePage() {
     experiencias: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = "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";
+  const apiKey = import.meta.env.VITE_OPENAI_TOKEN;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.nomeCompleto.trim() || !formData.cargoDesejado.trim() || formData.tecnologias.length === 0) {
-      toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha o nome completo, o cargo desejado e adicione ao menos uma tecnologia.",
-        variant: "destructive"
-      });
-      return;
-    }
 
     setIsLoading(true);
 
