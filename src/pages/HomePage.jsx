@@ -21,7 +21,11 @@ function HomePage() {
     experiencias: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = import.meta.env.VITE_OPENAI_TOKEN;
+  const openAiKey = import.meta.env.VITE_OPENAI_TOKEN;
+  const deepSeekKey = import.meta.env.VITE_DEEPSEEK_TOKEN;
+
+  const apiKey = openAiKey || deepSeekKey;
+  const isOpenAI = Boolean(openAiKey);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,14 +46,18 @@ O currículo deve incluir as seguintes seções:
 3.  **Experiência Profissional:** Formate a experiência fornecida em um estilo profissional, usando bullet points para destacar responsabilidades e conquistas.`;
     
     try {
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      const endpoint = isOpenAI
+        ? 'https://api.openai.com/v1/chat/completions'
+        : 'https://api.deepseek.com/v1/chat/completions';
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
+          model: isOpenAI ? 'gpt-3.5-turbo' : 'deepseek-chat',
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.7,
         })
@@ -57,8 +65,8 @@ O currículo deve incluir as seguintes seções:
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('OpenAI API Error:', errorData);
-        throw new Error(`Falha na API da OpenAI: ${errorData.error.message}`);
+        console.error('API Error:', errorData);
+        throw new Error(`Falha na API: ${errorData.error.message}`);
       }
 
       const data = await response.json();
