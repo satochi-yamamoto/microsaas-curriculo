@@ -89,7 +89,7 @@ body {
     top: 0;
     width: 100%;
     margin: 0;
-    padding: 20px;
+    padding: 0 20px;
     border: none;
     box-shadow: none;
     background: white !important;
@@ -102,6 +102,7 @@ body {
   
   #resume-to-print h1 {
     font-size: 2.5rem;
+    margin-top: 0;
   }
   
   #resume-to-print h2 {
@@ -120,6 +121,6 @@ body {
 
   @page {
     size: A4;
-    margin: 20mm;
+    margin: 5mm 10mm 10mm;
   }
 }
