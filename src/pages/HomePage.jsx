@@ -96,9 +96,14 @@ O currículo deve incluir as seguintes seções:
       navigate('/curriculo-gerado');
     } catch (error) {
       console.error(error);
+      const creditError = /quota|credit|crédit|cred[ií]tos|billing|payment/i.test(
+        error.message
+      );
       toast({
         title: "Erro",
-        description: `Ocorreu um erro ao gerar o currículo: ${error.message}`,
+        description: creditError
+          ? "O sistema não está respondendo. Tente novamente mais tarde."
+          : `Ocorreu um erro ao gerar o currículo: ${error.message}`,
         variant: "destructive"
       });
     } finally {
