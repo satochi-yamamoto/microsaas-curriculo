@@ -102,6 +102,7 @@ body {
   
   #resume-to-print h1 {
     font-size: 2.5rem;
+    margin-top: 0;
   }
   
   #resume-to-print h2 {
@@ -120,6 +121,8 @@ body {
 
   @page {
     size: A4;
+
     margin: 10mm;
+
   }
 }
