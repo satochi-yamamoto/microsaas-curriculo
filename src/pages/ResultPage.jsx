@@ -20,6 +20,7 @@ function ResultPage() {
       return;
     }
     setCurriculoData(JSON.parse(data));
+    localStorage.removeItem('curriculoData');
   }, [navigate]);
 
   const handleDownload = () => {
