@@ -17,6 +17,8 @@ function HomePage() {
   const [formData, setFormData] = useState({
     nomeCompleto: '',
     cargoDesejado: '',
+    email: '',
+    telefone: '',
     tecnologias: [],
     experiencias: ''
   });
@@ -40,6 +42,8 @@ function HomePage() {
 
 **Nome:** ${formData.nomeCompleto}
 **Cargo Desejado:** ${formData.cargoDesejado}
+**Email:** ${formData.email}
+**Telefone:** ${formData.telefone}
 **Tecnologias:** ${formData.tecnologias.join(', ')}
 **Experiência:** ${formData.experiencias}
 
@@ -201,6 +205,36 @@ O currículo deve incluir as seguintes seções:
                     placeholder="Ex: Desenvolvedor Full Stack"
                     value={formData.cargoDesejado}
                     onChange={(e) => setFormData(prev => ({ ...prev, cargoDesejado: e.target.value }))}
+                    className="bg-white/5 border-white/20 text-white placeholder-white/60"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-white font-medium">
+                    Email *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="seu@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    className="bg-white/5 border-white/20 text-white placeholder-white/60"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="telefone" className="text-white font-medium">
+                    Telefone de Contato *
+                  </Label>
+                  <Input
+                    id="telefone"
+                    type="tel"
+                    placeholder="(11) 99999-9999"
+                    value={formData.telefone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, telefone: e.target.value }))}
                     className="bg-white/5 border-white/20 text-white placeholder-white/60"
                     required
                   />

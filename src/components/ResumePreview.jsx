@@ -49,13 +49,20 @@ const parseMarkdownToJsx = (markdown) => {
 export function ResumePreview({ data }) {
   if (!data) return null;
 
-  const { nomeCompleto, cargoDesejado, generatedContent } = data;
+  const { nomeCompleto, cargoDesejado, email, telefone, generatedContent } = data;
 
   return (
     <div id="resume-to-print" className="bg-white/5 rounded-lg p-8 text-left mt-8">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-white">{nomeCompleto}</h1>
         <h2 className="text-2xl text-blue-300">{cargoDesejado}</h2>
+        {(email || telefone) && (
+          <p className="text-gray-300 mt-2">
+            {email && <span>{email}</span>}
+            {email && telefone && ' | '}
+            {telefone && <span>{telefone}</span>}
+          </p>
+        )}
       </div>
       <div className="prose prose-invert max-w-none">
         {parseMarkdownToJsx(generatedContent)}
