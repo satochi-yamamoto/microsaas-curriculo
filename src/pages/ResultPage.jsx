@@ -57,9 +57,10 @@ function ResultPage() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <AdBanner 
+            <AdBanner
               id="header-banner"
               className="h-24"
+              slot="8561357541"
               content="🎯 Espaço para Banner AdSense - Cabeçalho da Página de Resultado"
             />
           </motion.div>
