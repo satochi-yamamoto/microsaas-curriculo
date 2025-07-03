@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,8 @@ function HomePage() {
     experiencias: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [userIp, setUserIp] = useState('');
+  const [remainingAttempts, setRemainingAttempts] = useState(3);
   const openAiKey = import.meta.env.VITE_OPENAI_TOKEN;
   const deepSeekKey = import.meta.env.VITE_DEEPSEEK_TOKEN;
   const copilotKey = import.meta.env.VITE_GITHUB_COPILOT_TOKEN;
@@ -32,10 +34,51 @@ function HomePage() {
   const isDeepSeek = !isOpenAI && Boolean(deepSeekKey);
   const isCopilot = !isOpenAI && !isDeepSeek && Boolean(copilotKey);
 
+  useEffect(() => {
+    async function fetchIp() {
+      try {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+        setUserIp(data.ip);
+      } catch (err) {
+        console.error('Failed to fetch IP', err);
+        setUserIp('unknown');
+      }
+    }
+    fetchIp();
+  }, []);
+
+  useEffect(() => {
+    if (!userIp) return;
+    const submissions = JSON.parse(localStorage.getItem('submissions') || '{}');
+    const now = Date.now();
+    const dayMs = 86400000;
+    const records = (submissions[userIp] || []).filter(ts => now - ts < dayMs);
+    submissions[userIp] = records;
+    localStorage.setItem('submissions', JSON.stringify(submissions));
+    setRemainingAttempts(3 - records.length);
+  }, [userIp]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
 
+    const submissions = JSON.parse(localStorage.getItem('submissions') || '{}');
+    const ip = userIp || 'unknown';
+    const now = Date.now();
+    const dayMs = 86400000;
+    const records = (submissions[ip] || []).filter(ts => now - ts < dayMs);
+    if (records.length >= 3) {
+      toast({
+        title: 'Limite atingido',
+        description: 'Você já gerou 3 currículos nas últimas 24 horas.',
+        variant: 'destructive'
+      });
+      return;
+    }
+    records.push(now);
+    submissions[ip] = records;
+    localStorage.setItem('submissions', JSON.stringify(submissions));
+    setRemainingAttempts(3 - records.length);
     setIsLoading(true);
 
     const prompt = `Crie um currículo para um profissional de tecnologia com base nas seguintes informações. Formate a saída em Markdown, utilizando títulos (###) para as seções e listas com marcadores (*) para itens.
@@ -289,7 +332,7 @@ O currículo deve incluir as seguintes seções:
               <div className="flex justify-center">
                 <Button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoading || remainingAttempts <= 0}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-4 text-lg font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 pulse-glow"
                 >
                   {isLoading ? (
@@ -304,6 +347,9 @@ O currículo deve incluir as seguintes seções:
                     </div>
                   )}
                 </Button>
+                <p className="text-gray-400 text-sm mt-2">
+                  Você ainda pode gerar {remainingAttempts} currículo{remainingAttempts !== 1 ? 's' : ''} hoje.
+                </p>
               </div>
             </form>
           </motion.div>
