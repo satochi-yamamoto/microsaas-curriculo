@@ -307,7 +307,6 @@ function disableEditMode() {
     el.removeEventListener('mouseleave', handleDisabledElementLeave);
   });
 }
-
 window.addEventListener("message", function(event) {
   if (event.data?.type === "enable-edit-mode") {
     if (event.data?.translations) {
