@@ -173,9 +173,9 @@ O currículo deve incluir as seguintes seções:
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <AdBanner 
+            <AdBanner
               id="top-banner"
-              className="h-24"
+              className="h-16"
               content="🚀 Espaço para Banner AdSense - Topo da Página"
             />
           </motion.div>
