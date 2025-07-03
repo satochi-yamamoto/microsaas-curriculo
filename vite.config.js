@@ -195,6 +195,7 @@ export default defineConfig({
 		react(),
 		addTransformIndexHtml
 	],
+	
 	server: {
 		cors: true,
 		headers: {

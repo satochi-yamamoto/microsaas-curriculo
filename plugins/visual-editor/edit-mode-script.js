@@ -314,6 +314,7 @@ window.addEventListener("message", function(event) {
     }
     enableEditMode();
   }
+  
   if (event.data?.type === "disable-edit-mode") {
     disableEditMode();
   }

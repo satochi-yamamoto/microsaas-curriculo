@@ -127,6 +127,7 @@ export const EDIT_MODE_STYLES = `
     text-align: center;
   }
 
+  
   #inline-editor-disabled-tooltip.tooltip-active {
     display: block;
     animation: fadeInTooltip 0.2s ease-out forwards;
