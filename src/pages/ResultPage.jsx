@@ -59,7 +59,7 @@ function ResultPage() {
           >
             <AdBanner
               id="header-banner"
-              className="h-24"
+              className="h-16"
               slot="8561357541"
               content="🎯 Espaço para Banner AdSense - Cabeçalho da Página de Resultado"
             />
@@ -199,9 +199,9 @@ function ResultPage() {
           className="fixed bottom-0 left-0 right-0 p-4 bg-slate-900/95 backdrop-blur-sm border-t border-white/10"
         >
           <div className="max-w-4xl mx-auto">
-            <AdBanner 
+            <AdBanner
               id="footer-banner"
-              className="h-16"
+              className="h-12"
               content="🚀 Espaço para Banner AdSense - Rodapé Fixo"
             />
           </div>
