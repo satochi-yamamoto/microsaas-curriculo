@@ -12,6 +12,7 @@ export function AdBanner({ id, className, content, slot }) {
     }
   }, []);
 
+  
   return (
     <div id={id} className={cn('ad-banner', className)}>
       <ins

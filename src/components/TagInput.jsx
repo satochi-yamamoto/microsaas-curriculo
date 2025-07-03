@@ -18,6 +18,7 @@ export function TagInput({ value = [], onChange, placeholder = "Digite e pressio
     }
   };
 
+  
   const removeTag = (tagToRemove) => {
     onChange(value.filter(tag => tag !== tagToRemove));
   };

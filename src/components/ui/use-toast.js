@@ -8,6 +8,7 @@ function generateId() {
   return count.toString()
 }
 
+
 const toastStore = {
   state: {
     toasts: [],

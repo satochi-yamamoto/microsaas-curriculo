@@ -16,6 +16,7 @@ function CookieBanner() {
     setVisible(false);
   };
 
+  
   if (!visible) return null;
 
   return (
