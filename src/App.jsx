@@ -8,6 +8,7 @@ import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsOfService from '@/pages/TermsOfService';
 import CookieBanner from '@/components/CookieBanner';
 import Footer from '@/components/Footer';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Footer />
         <Toaster />
         <CookieBanner />
+        <Analytics />
       </div>
     </Router>
   );
