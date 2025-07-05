@@ -10,6 +10,7 @@ function TermsOfService() {
       <Helmet>
         <title>Termos de Uso</title>
         <meta name="description" content="Conheça os termos de uso do gerador de currículos." />
+        <meta name="google-adsense-account" content="ca-pub-4789090074866563" />
       </Helmet>
       <h1 className="text-3xl font-bold mb-4 text-white">Termos de Uso</h1>
       <p className="mb-4 text-gray-300">

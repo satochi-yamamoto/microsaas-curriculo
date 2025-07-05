@@ -47,6 +47,7 @@ function ResultPage() {
       <Helmet>
         <title>Currículo Gerado com Sucesso - Download Disponível</title>
         <meta name="description" content="Seu currículo profissional foi gerado com sucesso. Faça o download agora mesmo!" />
+        <meta name="google-adsense-account" content="ca-pub-4789090074866563" />
       </Helmet>
 
       <div className="min-h-screen py-8 px-4">

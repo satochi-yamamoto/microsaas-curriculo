@@ -163,6 +163,7 @@ O currículo deve incluir as seguintes seções:
       <Helmet>
         <title>Gerador de Currículos com IA - Crie seu CV Profissional</title>
         <meta name="description" content="Gere currículos profissionais para área de tecnologia usando inteligência artificial. Rápido, fácil e moderno." />
+        <meta name="google-adsense-account" content="ca-pub-4789090074866563" />
       </Helmet>
 
       <div className="min-h-screen py-8 px-4">
