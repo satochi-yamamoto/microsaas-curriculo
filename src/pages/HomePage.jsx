@@ -167,7 +167,7 @@ O currículo deve incluir as seguintes seções:
 
       <div className="min-h-screen py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <motion.div
+          {/*<motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -179,7 +179,7 @@ O currículo deve incluir as seguintes seções:
               content="🚀 Espaço para Banner AdSense - Topo da Página"
             />
           </motion.div>
-
+            */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -317,7 +317,7 @@ O currículo deve incluir as seguintes seções:
                 />
               </div>
 
-              <motion.div
+              {/*<motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -328,7 +328,7 @@ O currículo deve incluir as seguintes seções:
                   content="💼 Espaço para Banner AdSense - Entre Formulário e Botão"
                 />
               </motion.div>
-
+                */}
               <div className="flex justify-center">
                 <Button
                   type="submit"

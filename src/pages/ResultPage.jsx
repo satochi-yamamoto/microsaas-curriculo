@@ -51,7 +51,7 @@ function ResultPage() {
 
       <div className="min-h-screen py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <motion.div
+         {/*} <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -64,7 +64,7 @@ function ResultPage() {
               content="🎯 Espaço para Banner AdSense - Cabeçalho da Página de Resultado"
             />
           </motion.div>
-
+          */}
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <motion.div
@@ -143,7 +143,7 @@ function ResultPage() {
                 </motion.div>
               </motion.div>
             </div>
-
+                      {/*}
             <div className="lg:col-span-1">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -157,7 +157,7 @@ function ResultPage() {
                   content="📊 Espaço para Banner AdSense - Lateral do Botão de Download"
                 />
               </motion.div>
-            </div>
+            </div>*/}
           </div>
 
           <motion.div
@@ -191,7 +191,7 @@ function ResultPage() {
             </div>
           </motion.div>
         </div>
-
+{/*}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -205,7 +205,7 @@ function ResultPage() {
               content="🚀 Espaço para Banner AdSense - Rodapé Fixo"
             />
           </div>
-        </motion.div>
+        </motion.div>*/}
       </div>
     </>
   );
