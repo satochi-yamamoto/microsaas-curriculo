@@ -27,7 +27,12 @@ function HistoryPage() {
       if (error) {
         console.error('Erro ao buscar currículos:', error);
       } else {
-        setCurriculos(data);
+        // Parse stored JSON string if necessary
+        const parsed = data.map(item => ({
+          ...item,
+          data: typeof item.data === 'string' ? JSON.parse(item.data) : item.data
+        }));
+        setCurriculos(parsed);
       }
       setLoading(false);
     };
