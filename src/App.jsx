@@ -6,9 +6,12 @@ import ResultPage from '@/pages/ResultPage';
 import LoginPage from '@/pages/LoginPage';
 import RegisterPage from '@/pages/RegisterPage';
 import PricingPage from '@/pages/PricingPage';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import TermsOfService from '@/pages/TermsOfService';
 import { AuthProvider } from '@/contexts/SupabaseAuthContext';
 import Header from '@/components/Header';
 import CookieBanner from '@/components/CookieBanner';
+import Footer from '@/components/Footer';
 
 function App() {
   return (
@@ -23,8 +26,11 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/cadastro" element={<RegisterPage />} />
               <Route path="/planos" element={<PricingPage />} />
+              <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+              <Route path="/termos-de-uso" element={<TermsOfService />} />
             </Routes>
           </main>
+          <Footer />
           <CookieBanner />
           <Toaster />
         </div>
