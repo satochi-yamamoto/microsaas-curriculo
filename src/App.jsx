@@ -8,6 +8,7 @@ import RegisterPage from '@/pages/RegisterPage';
 import PricingPage from '@/pages/PricingPage';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsOfService from '@/pages/TermsOfService';
+import HistoryPage from '@/pages/HistoryPage';
 import { AuthProvider } from '@/contexts/SupabaseAuthContext';
 import Header from '@/components/Header';
 import CookieBanner from '@/components/CookieBanner';
@@ -25,6 +26,7 @@ function App() {
               <Route path="/curriculo-gerado" element={<ResultPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/cadastro" element={<RegisterPage />} />
+              <Route path="/historico" element={<HistoryPage />} />
               <Route path="/planos" element={<PricingPage />} />
               <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
               <Route path="/termos-de-uso" element={<TermsOfService />} />

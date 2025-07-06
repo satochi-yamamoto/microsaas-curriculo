@@ -159,6 +159,15 @@ O currículo deve incluir as seguintes seções:
         generatedContent: generatedContent
       };
       localStorage.setItem('curriculoData', JSON.stringify(curriculoCompleto));
+
+      if (user) {
+        const { error } = await supabase
+          .from('curriculos')
+          .insert({ user_id: user.id, data: JSON.stringify(curriculoCompleto) });
+        if (error) {
+          console.error('Erro ao salvar currículo:', error);
+        }
+      }
       toast({
         title: "Sucesso!",
         description: "Seu currículo foi gerado com sucesso!"

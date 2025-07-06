@@ -42,6 +42,13 @@ function Header() {
                   </Button>
                 </li>
                 <li>
+                  <Link to="/historico">
+                    <Button variant="ghost" className="text-white hover:bg-white/10">
+                      Histórico
+                    </Button>
+                  </Link>
+                </li>
+                <li>
                   <Button onClick={handleLogout} variant="ghost" size="icon">
                     <LogOut className="w-5 h-5 text-red-400" />
                   </Button>
