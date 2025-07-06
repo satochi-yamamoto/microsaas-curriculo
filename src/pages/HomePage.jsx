@@ -163,8 +163,7 @@ O currículo deve incluir as seguintes seções:
       if (user) {
         const { error } = await supabase
           .from('curriculos')
-          // Store as string to avoid JSON column issues
-          .insert({ user_id: user.id, data: JSON.stringify(curriculoCompleto) });
+          .insert({ user_id: user.id, data: curriculoCompleto });
         if (error) {
           console.error('Erro ao salvar currículo:', error);
         }
