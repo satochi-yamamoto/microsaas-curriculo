@@ -61,6 +61,13 @@ O projeto utiliza o Supabase para autenticação e armazenamento dos currículos
 supabase db push supabase/schema.sql
 ```
 
+Se preferir, execute o script abaixo que realiza o mesmo comando automaticamente
+(é necessário ter o Supabase CLI instalado):
+
+```bash
+npm run setup:db
+```
+
 As tabelas criadas são:
 
 - **profiles** – complementa `auth.users` com dados de assinatura e controle de geração.
