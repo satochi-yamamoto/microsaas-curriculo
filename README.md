@@ -1,24 +1,61 @@
-# microsaas-curriculo-with-data
+# Microsaas Currículo
 
-## Configuração de Ambiente
+Aplicação web em React para gerar currículos de profissionais de tecnologia utilizando a API da OpenAI. Os dados dos usuários e dos currículos gerados são armazenados no Supabase.
 
-Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+## Requisitos
 
-```env
-VITE_OPENAI_API_KEY=
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
+- Node.js 20 ou superior
+- npm
+
+## Configuração
+
+1. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+2. Copie o arquivo de exemplo `.env.example` para `.env` e defina as chaves de acesso:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Preencha as seguintes variáveis no arquivo `.env`:
+
+   ```env
+   VITE_OPENAI_API_KEY=seu_token_openai
+   VITE_SUPABASE_URL=https://<sua-instancia>.supabase.co
+   VITE_SUPABASE_ANON_KEY=sua_chave_anon
+   ```
+
+## Execução em desenvolvimento
+
+Inicie o servidor de desenvolvimento com o Vite:
+
+```bash
+npm run dev
 ```
 
-Insira os valores adequados para cada chave antes de iniciar o projeto.
+A aplicação ficará disponível em `http://localhost:5173`.
 
-## Supabase
+## Build de produção
 
-O projeto utiliza o [Supabase](https://supabase.com/) para autenticação e
-armazenamento dos currículos gerados. No diretório `supabase/` há um arquivo
-`schema.sql` contendo a estrutura das tabelas usadas pela aplicação. Para
-configurar o banco de dados, faça o upload desse script no painel do Supabase
-ou execute-o usando a CLI:
+Para gerar os arquivos otimizados para produção, execute:
+
+```bash
+npm run build
+```
+
+Para conferir o resultado localmente:
+
+```bash
+npm run preview
+```
+
+## Utilização do Supabase
+
+O projeto utiliza o Supabase para autenticação e armazenamento dos currículos. Para criar as tabelas necessárias, carregue o arquivo `supabase/schema.sql` em sua instância ou utilize a CLI:
 
 ```bash
 supabase db push supabase/schema.sql
@@ -26,7 +63,23 @@ supabase db push supabase/schema.sql
 
 As tabelas criadas são:
 
-* **profiles** – estende `auth.users` com informações de assinatura e controle
-  de geração.
-* **curriculos** – armazena cada currículo criado e está relacionado ao usuário
-  que o gerou.
+- **profiles** – complementa `auth.users` com dados de assinatura e controle de geração.
+- **curriculos** – guarda cada currículo gerado e faz referência ao usuário.
+
+## Docker
+
+Também é possível criar uma imagem Docker para servir a aplicação:
+
+```bash
+docker build -t microsaas-curriculo .
+```
+
+Em seguida execute o contêiner:
+
+```bash
+docker run -p 80:80 microsaas-curriculo
+```
+
+---
+
+Sinta-se à vontade para enviar melhorias ou relatar problemas através de pull requests.
