@@ -9,6 +9,7 @@ import PricingPage from '@/pages/PricingPage';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsOfService from '@/pages/TermsOfService';
 import HistoryPage from '@/pages/HistoryPage';
+import ActiveGamesPage from '@/pages/ActiveGamesPage';
 import { AuthProvider } from '@/contexts/SupabaseAuthContext';
 import Header from '@/components/Header';
 import CookieBanner from '@/components/CookieBanner';
@@ -28,6 +29,7 @@ function App() {
               <Route path="/cadastro" element={<RegisterPage />} />
               <Route path="/historico" element={<HistoryPage />} />
               <Route path="/planos" element={<PricingPage />} />
+              <Route path="/jogos-ativos" element={<ActiveGamesPage />} />
               <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
               <Route path="/termos-de-uso" element={<TermsOfService />} />
             </Routes>
