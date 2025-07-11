@@ -83,6 +83,43 @@ export const AuthProvider = ({ children }) => {
     return { error };
   }, [toast]);
 
+  const updatePassword = useCallback(
+    async (currentPassword, newPassword) => {
+      if (!user) {
+        return { error: new Error('Usuário não autenticado') };
+      }
+
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: currentPassword,
+      });
+
+      if (signInError) {
+        toast({
+          variant: 'destructive',
+          title: 'Senha atual incorreta',
+          description: signInError.message || 'Credenciais inválidas',
+        });
+        return { error: signInError };
+      }
+
+      const { error } = await supabase.auth.updateUser({ password: newPassword });
+
+      if (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Erro ao atualizar senha',
+          description: error.message || 'Algo deu errado',
+        });
+      } else {
+        toast({ title: 'Senha alterada com sucesso' });
+      }
+
+      return { error };
+    },
+    [toast, user]
+  );
+
   const value = useMemo(() => ({
     user,
     session,
@@ -90,7 +127,8 @@ export const AuthProvider = ({ children }) => {
     signUp,
     signIn,
     signOut,
-  }), [user, session, loading, signUp, signIn, signOut]);
+    updatePassword,
+  }), [user, session, loading, signUp, signIn, signOut, updatePassword]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
