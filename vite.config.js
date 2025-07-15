@@ -216,7 +216,44 @@ export default defineConfig({
 				'@babel/traverse',
 				'@babel/generator',
 				'@babel/types'
-			]
-		}
+			],
+			output: {
+				manualChunks: {
+					// Vendor chunk for React and React DOM
+					react: ['react', 'react-dom'],
+					// Router chunk
+					router: ['react-router-dom'],
+					// UI libraries chunk
+					ui: ['@radix-ui/react-alert-dialog', '@radix-ui/react-avatar', '@radix-ui/react-checkbox', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-label', '@radix-ui/react-slider', '@radix-ui/react-slot', '@radix-ui/react-tabs', '@radix-ui/react-toast'],
+					// Animation library
+					animation: ['framer-motion'],
+					// Supabase
+					supabase: ['@supabase/supabase-js'],
+					// Icons
+					icons: ['lucide-react'],
+					// Utilities
+					utils: ['class-variance-authority', 'clsx', 'tailwind-merge'],
+					// Helmet for SEO
+					helmet: ['react-helmet']
+				},
+				chunkFileNames: (chunkInfo) => {
+					const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop().replace('.jsx', '').replace('.js', '') : 'chunk';
+					return `assets/[name]-[hash].js`;
+				}
+			}
+		},
+		target: 'es2015',
+		minify: 'terser',
+		terserOptions: {
+			compress: {
+				drop_console: true,
+				drop_debugger: true,
+				pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
+			}
+		},
+		cssCodeSplit: true,
+		sourcemap: false,
+		assetsInlineLimit: 4096,
+		reportCompressedSize: false
 	}
 });

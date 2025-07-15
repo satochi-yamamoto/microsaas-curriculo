@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { AdBanner } from '@/components/AdBanner';
 import { useToast } from '@/components/ui/use-toast';
-import { ResumePreview } from '@/components/ResumePreview';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { supabase } from '@/lib/customSupabaseClient';
 import { Download, CheckCircle, ArrowLeft, FileText } from 'lucide-react';
+import LoadingSpinner from '@/components/LoadingSpinner';
+
+// Lazy load ResumePreview component
+const ResumePreview = React.lazy(() => import('@/components/ResumePreview').then(module => ({ default: module.ResumePreview })));
 
 function ResultPage() {
   const navigate = useNavigate();
@@ -113,7 +116,11 @@ function ResultPage() {
                   </p>
                 </motion.div>
 
-                {curriculoData && <ResumePreview data={curriculoData} />}
+                {curriculoData && (
+                  <Suspense fallback={<LoadingSpinner size="lg" className="my-8" />}>
+                    <ResumePreview data={curriculoData} />
+                  </Suspense>
+                )}
 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
