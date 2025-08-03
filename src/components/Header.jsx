@@ -63,6 +63,13 @@ function Header() {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/blog">
+                    <Button variant="ghost" className="text-white hover:bg-white/10">
+                      Dicas
+                    </Button>
+                  </Link>
+                </li>
+                <li>
                   <Button onClick={handleLogout} variant="ghost" size="icon">
                     <LogOut className="w-5 h-5 text-red-400" />
                   </Button>
@@ -70,6 +77,13 @@ function Header() {
               </>
             ) : (
               <>
+                <li>
+                  <Link to="/blog">
+                    <Button variant="ghost" className="text-white hover:bg-white/10">
+                      Dicas
+                    </Button>
+                  </Link>
+                </li>
                 <li>
                   <Link to="/login">
                     <Button variant="ghost" className="text-white hover:bg-white/10">

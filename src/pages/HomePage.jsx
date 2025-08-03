@@ -238,6 +238,46 @@ O currículo deve incluir as seguintes seções:
             </div>
           </motion.div>
 
+          {/* Conteúdo Editorial sobre currículos profissionais */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="bg-slate-800/50 rounded-lg p-6 mb-8 text-left"
+          >
+            <h2 className="text-2xl font-semibold text-white mb-4">Como criar um currículo que se destaca no mercado de tecnologia</h2>
+            <div className="prose prose-invert max-w-none">
+              <p className="text-gray-300 mb-4">
+                O mercado de tecnologia é altamente competitivo, e ter um currículo bem estruturado é fundamental para se destacar. 
+                Nosso gerador utiliza inteligência artificial para criar currículos que seguem as melhores práticas do setor, 
+                garantindo que suas habilidades técnicas sejam apresentadas de forma clara e impactante.
+              </p>
+              <div className="grid md:grid-cols-2 gap-6 mt-6">
+                <div>
+                  <h3 className="font-semibold text-blue-400 mb-2">📊 Dados que importam</h3>
+                  <p className="text-gray-300 text-sm">
+                    Estudos mostram que recrutadores levam apenas 6 segundos para avaliar um currículo. 
+                    Nossa IA garante que as informações mais relevantes estejam em destaque.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-purple-400 mb-2">🎯 Otimização ATS</h3>
+                  <p className="text-gray-300 text-sm">
+                    85% das empresas usam sistemas ATS. Nossos templates são otimizados para 
+                    passar por esses filtros automatizados.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Primeiro anúncio */}
+          <AdBanner 
+            slot="1234567890"
+            editorialContent="💡 Dica profissional: Personalizar seu currículo para cada vaga pode aumentar em até 60% suas chances de conseguir uma entrevista. Nossa ferramenta de IA analisa as tendências do mercado para criar conteúdo relevante."
+            className="my-8"
+          />
+
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="glass-effect rounded-2xl p-8 mb-8">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">
@@ -332,6 +372,45 @@ O currículo deve incluir as seguintes seções:
                 Especializado em profissionais de tecnologia e desenvolvimento
               </p>
             </div>
+          </motion.div>
+
+          {/* Segundo anúncio com mais conteúdo editorial */}
+          <AdBanner 
+            slot="0987654321"
+            editorialContent="🚀 Estatística importante: Profissionais com currículos otimizados para ATS têm 3x mais chances de serem chamados para entrevistas. Nossa tecnologia garante compatibilidade com os principais sistemas de recrutamento."
+            className="my-12"
+          />
+
+          {/* Conteúdo editorial adicional sobre tendências do mercado */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg p-8 mb-8"
+          >
+            <h2 className="text-2xl font-semibold text-white mb-6 text-center">Tendências do Mercado de Tecnologia em 2024</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-blue-400 mb-2">95%</div>
+                <p className="text-gray-300 text-sm">das empresas usam IA no processo de recrutamento</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-purple-400 mb-2">72%</div>
+                <p className="text-gray-300 text-sm">dos recrutadores priorizam habilidades técnicas específicas</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-400 mb-2">60%</div>
+                <p className="text-gray-300 text-sm">das vagas tech são preenchidas em menos de 30 dias</p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-yellow-400 mb-2">8s</div>
+                <p className="text-gray-300 text-sm">tempo médio que recrutadores levam para avaliar um CV</p>
+              </div>
+            </div>
+            <p className="text-gray-300 text-center mt-6 max-w-3xl mx-auto">
+              Com o mercado cada vez mais competitivo, ter um currículo profissional e bem estruturado é essencial. 
+              Nossa ferramenta de IA incorpora essas tendências para garantir que seu CV se destaque.
+            </p>
           </motion.div>
         </div>
       </div>

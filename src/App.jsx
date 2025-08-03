@@ -18,6 +18,7 @@ const PrivacyPolicy = React.lazy(() => import('@/pages/PrivacyPolicy'));
 const TermsOfService = React.lazy(() => import('@/pages/TermsOfService'));
 const HistoryPage = React.lazy(() => import('@/pages/HistoryPage'));
 const AccountPage = React.lazy(() => import('@/pages/AccountPage'));
+const BlogPage = React.lazy(() => import('@/pages/BlogPage'));
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
                   <Route path="/historico" element={<HistoryPage />} />
                   <Route path="/conta" element={<AccountPage />} />
                   <Route path="/planos" element={<PricingPage />} />
+                  <Route path="/blog" element={<BlogPage />} />
+                  <Route path="/dicas" element={<BlogPage />} />
                   <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
                   <Route path="/termos-de-uso" element={<TermsOfService />} />
                 </Routes>

@@ -195,6 +195,41 @@ function ResultPage() {
               </p>
             </div>
           </motion.div>
+
+          {/* Conteúdo editorial sobre otimização de currículo */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="bg-slate-800/50 rounded-lg p-6 mt-12 mb-8"
+          >
+            <h2 className="text-2xl font-semibold text-white mb-4">Próximos passos para maximizar suas oportunidades</h2>
+            <div className="grid md:grid-cols-2 gap-6 text-gray-300">
+              <div>
+                <h3 className="font-semibold text-blue-400 mb-2">✅ Personalize para cada vaga</h3>
+                <p className="text-sm">Adapte as palavras-chave e experiências relevantes para cada posição que você aplicar. Isso aumenta significativamente suas chances de sucesso.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-purple-400 mb-2">📧 Carta de apresentação</h3>
+                <p className="text-sm">Complemente seu currículo com uma carta de apresentação personalizada que destaque sua motivação para a vaga específica.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-green-400 mb-2">🔗 Perfil LinkedIn</h3>
+                <p className="text-sm">Mantenha seu perfil do LinkedIn atualizado e consistente com as informações do seu currículo para máxima visibilidade.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-yellow-400 mb-2">📊 Acompanhe resultados</h3>
+                <p className="text-sm">Monitore a taxa de resposta das suas aplicações e ajuste estratégias conforme necessário para melhorar os resultados.</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Anúncio na página de resultado */}
+          <AdBanner 
+            slot="1122334455"
+            editorialContent="💼 Você sabia? Currículos com design profissional têm 40% mais chances de serem lidos completamente pelos recrutadores. Continue investindo no seu desenvolvimento profissional!"
+            className="my-8"
+          />
         </div>
 
        
