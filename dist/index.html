@@ -1,11 +1,32 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M11BMN3NLF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M11BMN3NLF');
+</script>
+    
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="generator" content="Hostinger Horizons" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-adsense-account" content="ca-pub-4789090074866563" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Crie currículos profissionais para tecnologia usando inteligência artificial. Gerador gratuito, rápido e otimizado para recrutadores tech." />
+    <meta name="keywords" content="currículo, CV, tecnologia, programador, desenvolvedor, IA, gerador de currículo, inteligência artificial" />
+    <meta name="author" content="Gerador de Currículos IA" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Gerador de Currículos com IA - Crie seu CV Profissional" />
+    <meta property="og:description" content="Ferramenta gratuita para criar currículos profissionais na área de tecnologia usando inteligência artificial." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
     
     <!-- Resource hints for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +47,12 @@
         align-items: center;
         justify-content: center;
         z-index: 9999;
+        flex-direction: column;
+        padding: 20px;
+      }
+      .loading-content {
+        text-align: center;
+        max-width: 400px;
       }
       .loading-spinner {
         width: 40px;
@@ -34,6 +61,37 @@
         border-top: 3px solid #2563eb;
         border-radius: 50%;
         animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+      .loading-title {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .loading-description {
+        color: #9CA3AF;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+      .loading-tip {
+        background: rgba(30, 41, 59, 0.5);
+        border-left: 4px solid #3B82F6;
+        padding: 12px;
+        border-radius: 6px;
+        text-align: left;
+      }
+      .loading-tip-title {
+        color: #60A5FA;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      .loading-tip-text {
+        color: #D1D5DB;
+        font-size: 12px;
+        line-height: 1.4;
       }
       @keyframes spin {
         0% { transform: rotate(0deg); }
@@ -43,16 +101,16 @@
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4789090074866563"
       crossorigin="anonymous"></script>
-    <title>Gerador de Currículos com IA</title>
-    <script type="module" crossorigin src="/assets/index-7fbfe902.js"></script>
+    <title>Gerador de Currículos com IA - Crie seu CV Profissional</title>
+    <script type="module" crossorigin src="/assets/index-b3ce1a4a.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-b06bd742.js">
     <link rel="modulepreload" crossorigin href="/assets/ui-c9cf61f3.js">
     <link rel="modulepreload" crossorigin href="/assets/supabase-58c16b84.js">
     <link rel="modulepreload" crossorigin href="/assets/router-f4cf630b.js">
     <link rel="modulepreload" crossorigin href="/assets/utils-a6b5387a.js">
-    <link rel="modulepreload" crossorigin href="/assets/icons-4062004e.js">
+    <link rel="modulepreload" crossorigin href="/assets/icons-67a24831.js">
     <link rel="modulepreload" crossorigin href="/assets/animation-2247ff6b.js">
-    <link rel="stylesheet" href="/assets/index-3eeda172.css">
+    <link rel="stylesheet" href="/assets/index-8a5c12f7.css">
     <script type="module">
 window.onerror = (message, source, lineno, colno, errorObj) => {
 	const errorDetails = errorObj ? JSON.stringify({
@@ -183,9 +241,23 @@ window.fetch = function(...args) {
   </head>
   <body>
     <div id="root">
-      <!-- Loading fallback -->
+      <!-- Enhanced loading fallback with editorial content -->
       <div class="loading-wrapper">
-        <div class="loading-spinner"></div>
+        <div class="loading-content">
+          <div class="loading-spinner"></div>
+          <div class="loading-title">Carregando Gerador de Currículos</div>
+          <div class="loading-description">
+            Preparando nossa ferramenta de IA para criar seu currículo profissional. 
+            Em instantes você terá acesso à melhor tecnologia para destacar suas habilidades técnicas.
+          </div>
+          <div class="loading-tip">
+            <div class="loading-tip-title">💡 Dica profissional</div>
+            <div class="loading-tip-text">
+              Currículos otimizados para ATS (Applicant Tracking Systems) têm 3x mais chances de serem selecionados. 
+              Nossa IA garante formatação adequada para esses sistemas.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     

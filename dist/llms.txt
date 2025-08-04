@@ -1,10 +1,11 @@
 ## Pages
 - [Cadastro - Gerador de Currículos com IA](/register): Crie sua conta para aproveitar ao máximo nosso gerador de currículos com IA.
 - [Currículo Gerado com Sucesso - Download Disponível](/result): Seu currículo profissional foi gerado com sucesso. Faça o download agora mesmo!
+- [Dicas e Tendências para Currículos em Tecnologia - Blog](/blog): Descubra as melhores práticas para criar currículos na área de tecnologia. Tendências do mercado, dicas de especialistas e otimização para ATS.
 - [Gerador de Currículos com IA - Crie seu CV Profissional](/home): Gere currículos profissionais para área de tecnologia usando inteligência artificial. Rápido, fácil e moderno.
 - [Gerenciar Conta](/account): No description available
 - [Histórico de Currículos](/history): No description available
 - [Login - Gerador de Currículos IA](/login): Acesse sua conta para criar e gerenciar seus currículos.
 - [Planos e Preços - Gerador de Currículos com IA](/pricing): Escolha o plano que melhor se adapta às suas necessidades e comece a criar currículos incríveis.
-- [Política de Privacidade](/privacypolicy): Saiba como tratamos seus dados no gerador de currículos.
+- [Política de Privacidade - Gerador de Currículos](/privacypolicy): Saiba como tratamos seus dados no gerador de currículos e nossa política de anúncios.
 - [Termos de Uso](/termsofservice): Conheça os termos de uso do gerador de currículos.
