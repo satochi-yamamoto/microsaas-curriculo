@@ -1,0 +1,19 @@
+{
+  "name": "Gerador de Currículos com IA",
+  "short_name": "CV IA",
+  "description": "Crie currículos profissionais para tecnologia usando inteligência artificial",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e293b",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}

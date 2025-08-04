@@ -4,5 +4,3 @@
 - [Gerenciar Conta](/account): No description available
 - [Histórico de Currículos](/history): No description available
 - [Login - Gerador de Currículos IA](/login): Acesse sua conta para criar e gerenciar seus currículos.
-- [Política de Privacidade - Gerador de Currículos](/privacypolicy): Saiba como tratamos seus dados no gerador de currículos e nossa política de anúncios.
-- [Termos de Uso](/termsofservice): Conheça os termos de uso do gerador de currículos.
