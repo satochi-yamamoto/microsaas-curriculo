@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { SEOHelmet, createServiceSchema } from '@/components/SEOHelmet';
 import { useToast } from '@/components/ui/use-toast';
 import { Check, Star, Zap } from 'lucide-react';
 
@@ -50,12 +50,21 @@ function PricingPage() {
     });
   };
 
+  const pricingSchema = createServiceSchema(
+    "Planos Premium - Gerador de Currículos IA",
+    "Planos pagos com geração ilimitada de currículos profissionais para tecnologia",
+    "9.90"
+  );
+
   return (
     <>
-      <Helmet>
-        <title>Planos e Preços - Gerador de Currículos com IA</title>
-        <meta name="description" content="Escolha o plano que melhor se adapta às suas necessidades e comece a criar currículos incríveis." />
-      </Helmet>
+      <SEOHelmet
+        title="Planos e Preços - Gerador de Currículos com IA | A partir de R$ 9,90"
+        description="Escolha o plano que melhor se adapta às suas necessidades. Plano gratuito disponível. Premium com geração ilimitada de currículos profissionais por apenas R$ 9,90/mês."
+        keywords="planos curriculo IA, preço gerador CV, assinatura premium, curriculo ilimitado, plano pago"
+        url="https://geradordecurriculosai.com/planos"
+        structuredData={pricingSchema}
+      />
       <div className="min-h-screen py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
