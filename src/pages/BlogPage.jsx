@@ -1,23 +1,31 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { AdBanner } from '@/components/AdBanner';
 import { TechTrends, ResumeOptimizationGuide } from '@/components/EditorialContent';
+import { SEOHelmet, createArticleSchema } from '@/components/SEOHelmet';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, TrendingUp, Target, Users } from 'lucide-react';
 
 function BlogPage() {
   const navigate = useNavigate();
 
+  const blogSchema = createArticleSchema(
+    "Dicas e Tendências para Currículos em Tecnologia",
+    "Guia completo com as melhores práticas para criar currículos na área de tecnologia",
+    "2024-12-19",
+    "2024-12-19"
+  );
+
   return (
     <>
-      <Helmet>
-        <title>Dicas e Tendências para Currículos em Tecnologia - Blog</title>
-        <meta name="description" content="Descubra as melhores práticas para criar currículos na área de tecnologia. Tendências do mercado, dicas de especialistas e otimização para ATS." />
-        <meta name="keywords" content="currículo tecnologia, dicas currículo, ATS, recrutamento tech, tendências mercado" />
-        <meta name="google-adsense-account" content="ca-pub-4789090074866563" />
-      </Helmet>
+      <SEOHelmet
+        title="Blog: Dicas e Tendências para Currículos em Tecnologia | Guia Completo 2024"
+        description="Descubra as melhores práticas para criar currículos na área de tecnologia. Tendências do mercado, dicas de especialistas e otimização para ATS. Guia atualizado 2024."
+        keywords="blog currículo tecnologia, dicas CV tech, ATS otimização, recrutamento tech, tendências mercado 2024, carreira desenvolvedor"
+        url="https://geradordecurriculosai.com/blog"
+        structuredData={blogSchema}
+      />
 
       <div className="min-h-screen py-8 px-4">
         <div className="max-w-4xl mx-auto">

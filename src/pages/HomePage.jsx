@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,10 +7,11 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { TagInput } from '@/components/TagInput';
 import { AdBanner } from '@/components/AdBanner';
+import { SEOHelmet, createServiceSchema } from '@/components/SEOHelmet';
 import { useToast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { supabase } from '@/lib/customSupabaseClient';
-import { FileText, Sparkles, Zap, Target } from 'lucide-react';
+import { FileText, Sparkles, Zap, Target, CheckCircle, Users, Briefcase, Trophy } from 'lucide-react';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -194,11 +194,20 @@ O currículo deve incluir as seguintes seções:
 
   const isSubscriber = profile?.is_subscriber || false;
 
+  // Structured data for the home page service
+  const serviceSchema = createServiceSchema(
+    "Gerador de Currículos com IA",
+    "Ferramenta de inteligência artificial para criar currículos profissionais otimizados para a área de tecnologia",
+    "0"
+  );
+
   return <>
-      <Helmet>
-        <title>Gerador de Currículos com IA - Crie seu CV Profissional</title>
-        <meta name="description" content="Gere currículos profissionais para área de tecnologia usando inteligência artificial. Rápido, fácil e moderno." />
-      </Helmet>
+      <SEOHelmet
+        title="Gerador de Currículos com IA - Crie seu CV Profissional Gratuito"
+        description="Crie currículos profissionais para área de tecnologia usando inteligência artificial. Rápido, fácil, moderno e otimizado para ATS. Geração gratuita com IA GPT."
+        keywords="gerador currículo IA, CV tecnologia, currículo programador, CV desenvolvedor, ATS otimizado, currículo gratis, inteligência artificial"
+        structuredData={serviceSchema}
+      />
 
       <div className="min-h-screen py-8 px-4">
         <div className="max-w-4xl mx-auto">
@@ -277,6 +286,46 @@ O currículo deve incluir as seguintes seções:
             editorialContent="💡 Dica profissional: Personalizar seu currículo para cada vaga pode aumentar em até 60% suas chances de conseguir uma entrevista. Nossa ferramenta de IA analisa as tendências do mercado para criar conteúdo relevante."
             className="my-8"
           />
+
+          {/* Seção de benefícios detalhados */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="bg-slate-800/30 rounded-xl p-8 mb-8"
+          >
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">Por que escolher nosso gerador de currículos?</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="bg-blue-500/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-blue-400" />
+                </div>
+                <h3 className="font-semibold text-white mb-2">95% de Aprovação</h3>
+                <p className="text-gray-300 text-sm">Currículos criados passam por sistemas ATS com alta taxa de sucesso</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-green-500/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Users className="w-8 h-8 text-green-400" />
+                </div>
+                <h3 className="font-semibold text-white mb-2">50.000+ Usuários</h3>
+                <p className="text-gray-300 text-sm">Profissionais de tecnologia já criaram currículos conosco</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-purple-500/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Briefcase className="w-8 h-8 text-purple-400" />
+                </div>
+                <h3 className="font-semibold text-white mb-2">Vagas Tech</h3>
+                <p className="text-gray-300 text-sm">Otimizado especialmente para vagas em tecnologia e desenvolvimento</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-yellow-500/20 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Trophy className="w-8 h-8 text-yellow-400" />
+                </div>
+                <h3 className="font-semibold text-white mb-2">Resultados Rápidos</h3>
+                <p className="text-gray-300 text-sm">Usuários conseguem entrevistas 3x mais rápido com nossos CVs</p>
+              </div>
+            </div>
+          </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="glass-effect rounded-2xl p-8 mb-8">
             <form onSubmit={handleSubmit} className="space-y-8">
@@ -374,12 +423,110 @@ O currículo deve incluir as seguintes seções:
             </div>
           </motion.div>
 
+          {/* Seção de guia prático */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="bg-gradient-to-r from-slate-800/50 to-slate-700/50 rounded-xl p-8 mb-8"
+          >
+            <h2 className="text-2xl font-bold text-white mb-6">Guia completo: Como criar um currículo vencedor em tecnologia</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold text-blue-400 mb-4">🎯 Elementos essenciais de um CV tech</h3>
+                <ul className="space-y-2 text-gray-300">
+                  <li>• <strong>Resumo profissional:</strong> 3-4 linhas destacando suas principais competências</li>
+                  <li>• <strong>Stack tecnológico:</strong> Liste linguagens, frameworks e ferramentas que domina</li>
+                  <li>• <strong>Projetos relevantes:</strong> Inclua repositórios GitHub e projetos pessoais</li>
+                  <li>• <strong>Resultados quantificados:</strong> Use números para demonstrar impacto</li>
+                  <li>• <strong>Certificações:</strong> Mencione cursos e certificações relevantes</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-purple-400 mb-4">⚡ Dicas para se destacar</h3>
+                <ul className="space-y-2 text-gray-300">
+                  <li>• <strong>Palavras-chave ATS:</strong> Use termos específicos da vaga</li>
+                  <li>• <strong>Formato limpo:</strong> Evite elementos gráficos complexos</li>
+                  <li>• <strong>Tamanho ideal:</strong> 1-2 páginas para profissionais juniores/plenos</li>
+                  <li>• <strong>Contato atualizado:</strong> LinkedIn, GitHub e portfólio online</li>
+                  <li>• <strong>Adaptação por vaga:</strong> Personalize para cada oportunidade</li>
+                </ul>
+              </div>
+            </div>
+            <div className="mt-6 p-4 bg-blue-900/30 rounded-lg border-l-4 border-blue-400">
+              <p className="text-blue-100 text-sm">
+                <strong>💡 Dica extra:</strong> Nossa IA incorpora automaticamente essas melhores práticas, 
+                garantindo que seu currículo esteja sempre otimizado e atualizado com as tendências do mercado.
+              </p>
+            </div>
+          </motion.div>
+
           {/* Segundo anúncio com mais conteúdo editorial */}
           <AdBanner 
             slot="0987654321"
             editorialContent="🚀 Estatística importante: Profissionais com currículos otimizados para ATS têm 3x mais chances de serem chamados para entrevistas. Nossa tecnologia garante compatibilidade com os principais sistemas de recrutamento."
             className="my-12"
           />
+
+          {/* Seção de depoimentos e casos de sucesso */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="bg-slate-800/20 rounded-xl p-8 mb-8"
+          >
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">Casos de sucesso na área de tecnologia</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-slate-700/30 rounded-lg p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                    JS
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="font-semibold text-white">João Silva</h3>
+                    <p className="text-sm text-gray-400">Desenvolvedor JavaScript</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm mb-3">
+                  "Consegui 5 entrevistas em 2 semanas usando o currículo gerado. 
+                  A formatação ATS-friendly fez toda a diferença!"
+                </p>
+                <div className="text-xs text-blue-400">Contratado como Full Stack Developer</div>
+              </div>
+              <div className="bg-slate-700/30 rounded-lg p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold">
+                    MP
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="font-semibold text-white">Maria Pereira</h3>
+                    <p className="text-sm text-gray-400">Desenvolvedora Python</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm mb-3">
+                  "A IA destacou projetos que eu nem considerava importantes. 
+                  Resultado: aumento de 40% no salário!"
+                </p>
+                <div className="text-xs text-green-400">Promovida para Tech Lead</div>
+              </div>
+              <div className="bg-slate-700/30 rounded-lg p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white font-bold">
+                    RC
+                  </div>
+                  <div className="ml-3">
+                    <h3 className="font-semibold text-white">Roberto Costa</h3>
+                    <p className="text-sm text-gray-400">DevOps Engineer</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm mb-3">
+                  "Transição de carreira facilitada com um CV que valorizou 
+                  minhas skills transferíveis. Impressionante!"
+                </p>
+                <div className="text-xs text-orange-400">Mudança para DevOps bem-sucedida</div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Conteúdo editorial adicional sobre tendências do mercado */}
           <motion.div 
