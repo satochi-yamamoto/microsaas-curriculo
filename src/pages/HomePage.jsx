@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,7 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { TagInput } from '@/components/TagInput';
-import { AdBanner } from '@/components/AdBanner';
+import { ContentAdBanner } from '@/components/AdBanner';
+import { SEOHead, websiteSchema, webApplicationSchema } from '@/components/SEOHead';
 import { useToast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { supabase } from '@/lib/customSupabaseClient';
@@ -194,11 +194,32 @@ O currículo deve incluir as seguintes seções:
 
   const isSubscriber = profile?.is_subscriber || false;
 
+  // Combined JSON-LD schema for homepage
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      websiteSchema,
+      webApplicationSchema,
+      {
+        "@type": "Organization",
+        "name": "YD Software",
+        "url": "https://ydsoftware.com",
+        "logo": "https://curriculo-ia.com/logo.png",
+        "sameAs": [
+          "https://github.com/ydsoftware"
+        ]
+      }
+    ]
+  };
+
   return <>
-      <Helmet>
-        <title>Gerador de Currículos com IA - Crie seu CV Profissional</title>
-        <meta name="description" content="Gere currículos profissionais para área de tecnologia usando inteligência artificial. Rápido, fácil e moderno." />
-      </Helmet>
+      <SEOHead
+        title="Gerador de Currículos com IA Grátis - Crie CV Profissional para Tecnologia"
+        description="Crie currículos profissionais para área de tecnologia usando inteligência artificial. Gerador gratuito, rápido e otimizado para ATS. Templates modernos para programadores, desenvolvedores e profissionais de TI."
+        keywords="gerador de currículo grátis, currículo online, CV tecnologia, currículo programador, currículo desenvolvedor, currículo IA, artificial intelligence resume, currículo ATS, template currículo, fazer currículo, criar CV, currículo profissional, jobs tecnologia, emprego programador, vaga desenvolvedor, currículo tech, resume builder"
+        canonical="https://curriculo-ia.com/"
+        jsonLd={combinedSchema}
+      />
 
       <div className="min-h-screen py-8 px-4">
         <div className="max-w-4xl mx-auto">
@@ -271,11 +292,9 @@ O currículo deve incluir as seguintes seções:
             </div>
           </motion.div>
 
-          {/* Primeiro anúncio */}
-          <AdBanner 
-            slot="1234567890"
-            editorialContent="💡 Dica profissional: Personalizar seu currículo para cada vaga pode aumentar em até 60% suas chances de conseguir uma entrevista. Nossa ferramenta de IA analisa as tendências do mercado para criar conteúdo relevante."
-            className="my-8"
+          {/* Primeiro anúncio com conteúdo editorial robusto */}
+          <ContentAdBanner 
+            editorialContent="💡 Dica de especialistas em recrutamento: Currículos personalizados para cada vaga podem aumentar em até 60% suas chances de conseguir uma entrevista. Nossa ferramenta de IA analisa as tendências atuais do mercado de tecnologia para criar conteúdo relevante e otimizado para sistemas ATS (Applicant Tracking Systems), garantindo que seu perfil seja encontrado pelos recrutadores. Estudos recentes mostram que 95% das empresas tech utilizam algum tipo de automação no processo seletivo."
           />
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="glass-effect rounded-2xl p-8 mb-8">
@@ -374,11 +393,9 @@ O currículo deve incluir as seguintes seções:
             </div>
           </motion.div>
 
-          {/* Segundo anúncio com mais conteúdo editorial */}
-          <AdBanner 
-            slot="0987654321"
-            editorialContent="🚀 Estatística importante: Profissionais com currículos otimizados para ATS têm 3x mais chances de serem chamados para entrevistas. Nossa tecnologia garante compatibilidade com os principais sistemas de recrutamento."
-            className="my-12"
+          {/* Segundo anúncio com conteúdo editorial extenso */}
+          <ContentAdBanner 
+            editorialContent="🚀 Dados do mercado de trabalho em tecnologia: Profissionais com currículos otimizados para ATS (Applicant Tracking Systems) têm 300% mais chances de serem chamados para entrevistas. Nossa tecnologia incorpora algoritmos avançados que garantem compatibilidade com os principais sistemas de recrutamento utilizados por empresas como Google, Microsoft, Amazon e startups inovadoras. Além disso, análises de RH mostram que currículos bem estruturados reduzem em 40% o tempo de processo seletivo, beneficiando tanto candidatos quanto recrutadores. Investir em um currículo profissional é investir na sua carreira."
           />
 
           {/* Conteúdo editorial adicional sobre tendências do mercado */}

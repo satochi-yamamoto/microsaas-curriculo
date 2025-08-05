@@ -1,0 +1,20 @@
+# Security Policy
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+
+# HTTPS Redirect
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# AdSense Configuration
+X-Ads-Txt-Path: /ads.txt
+
+# SEO Headers
+X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1
+
+# Cache Control
+Cache-Control: public, max-age=31536000, immutable
+
+# Content Type
+Content-Type: text/html; charset=utf-8
+
+# Language
+Content-Language: pt-BR

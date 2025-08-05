@@ -1,1 +1,12 @@
+# Ads.txt file for Google AdSense
+# Site: curriculo-ia.com
+# Updated: 2025-08-05
+
+# Google AdSense
 google.com, pub-4789090074866563, DIRECT, f08c47fec0942fa0
+
+# Google Ad Manager (if using)
+google.com, pub-4789090074866563, DIRECT, f08c47fec0942fa0
+
+# Google Exchange (AdX)
+google.com, pub-4789090074866563, RESELLER, f08c47fec0942fa0

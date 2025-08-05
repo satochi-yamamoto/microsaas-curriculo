@@ -1,0 +1,59 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://curriculo-ia.com/sitemap.xml
+
+# Diretrizes específicas para crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Bloquear páginas privadas e administrativas
+Disallow: /conta
+Disallow: /historico
+Disallow: /curriculo-gerado
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /src/
+Disallow: /node_modules/
+
+# Permitir acesso aos recursos importantes
+Allow: /blog
+Allow: /dicas
+Allow: /planos
+Allow: /login
+Allow: /cadastro
+Allow: /politica-de-privacidade
+Allow: /termos-de-uso
+
+# Arquivos de mídia e recursos
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.webp$
+
+# Ads.txt para Google AdSense
+Allow: /ads.txt
