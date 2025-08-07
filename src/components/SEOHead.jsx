@@ -69,9 +69,6 @@ export function SEOHead({
           {JSON.stringify(jsonLd)}
         </script>
       )}
-      
-      {/* AdSense verification */}
-      <meta name="google-adsense-account" content="ca-pub-4789090074866563" />
     </Helmet>
   );
 }

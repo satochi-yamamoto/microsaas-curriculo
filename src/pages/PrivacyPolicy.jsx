@@ -43,21 +43,22 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-green-400 mb-3">Publicidade e Google AdSense</h2>
+            <h2 className="text-xl font-semibold text-green-400 mb-3">Publicidade e Adsterra</h2>
             <p className="mb-4">
-              Este site exibe anúncios fornecidos pelo Google AdSense para ajudar a manter o serviço gratuito. 
+              Este site exibe anúncios fornecidos pela Adsterra para ajudar a manter o serviço gratuito. 
               Sobre nossa publicidade:
             </p>
             <ul className="list-disc list-inside mb-4 space-y-1">
               <li>Os anúncios são exibidos apenas em páginas com conteúdo editorial relevante</li>
               <li>Utilizamos anúncios responsivos que se adaptam ao dispositivo do usuário</li>
-              <li>O Google pode usar cookies para exibir anúncios baseados em interesses</li>
-              <li>Você pode gerenciar suas preferências de anúncios através das configurações do Google</li>
+              <li>A Adsterra pode usar cookies para exibir anúncios baseados em interesses</li>
+              <li>Você pode gerenciar suas preferências de anúncios através das configurações do seu navegador</li>
+              <li>Nossos anúncios seguem padrões rigorosos de qualidade e relevância</li>
             </ul>
             <p className="mb-4">
-              Para mais informações sobre como o Google usa dados para anúncios, visite: 
-              <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 ml-1">
-                Políticas de Anúncios do Google
+              Para mais informações sobre como a Adsterra trata dados para anúncios, visite: 
+              <a href="https://adsterra.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 ml-1">
+                Política de Privacidade da Adsterra
               </a>
             </p>
           </section>

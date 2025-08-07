@@ -1,12 +1,7 @@
-# Ads.txt file for Google AdSense
+# Ads.txt file for Adsterra
 # Site: curriculo-ia.com
-# Updated: 2025-08-05
+# Updated: 2025-08-07
 
-# Google AdSense
-google.com, pub-4789090074866563, DIRECT, f08c47fec0942fa0
-
-# Google Ad Manager (if using)
-google.com, pub-4789090074866563, DIRECT, f08c47fec0942fa0
-
-# Google Exchange (AdX)
-google.com, pub-4789090074866563, RESELLER, f08c47fec0942fa0
+# Adsterra - Primary ad network
+adsterra.com, 594094ec53033d648141c0b5a324c0e9, DIRECT
+adsterra.com, 594094ec53033d648141c0b5a324c0e9, RESELLER

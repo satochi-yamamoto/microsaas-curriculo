@@ -4,36 +4,44 @@ import { cn } from '@/lib/utils';
 export function AdBanner({ 
   id, 
   className, 
-  slot, 
-  format = "auto", 
+  adKey = '594094ec53033d648141c0b5a324c0e9',
+  format = 'iframe',
+  height = 250,
+  width = 300,
   editorialContent,
-  style = { display: 'block' },
   responsive = true 
 }) {
   const adRef = useRef(null);
 
   useEffect(() => {
-    // Only initialize if we have a valid slot and AdSense is loaded
-    if (slot && window.adsbygoogle && adRef.current) {
+    // Initialize Adsterra ad
+    if (adRef.current && window.atOptions) {
       try {
-        // Check if ad is already initialized
-        if (!adRef.current.dataset.adsbygoogleStatus) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
+        // Create script element for Adsterra
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = `//www.highperformanceformat.com/${adKey}/invoke.js`;
+        script.async = true;
+        
+        // Configure Adsterra options
+        window.atOptions = {
+          'key': adKey,
+          'format': format,
+          'height': height,
+          'width': width,
+          'params': {}
+        };
+        
+        adRef.current.appendChild(script);
       } catch (error) {
-        console.warn('AdSense initialization error:', error);
+        console.warn('Adsterra initialization error:', error);
       }
     }
-  }, [slot]);
-
-  // Don't render ad component if no slot is provided
-  if (!slot) {
-    return null;
-  }
+  }, [adKey, format, height, width]);
 
   return (
     <div className={cn("ad-banner-wrapper", className)} role="complementary" aria-label="Publicidade">
-      {/* Editorial content before ad - REQUIRED by AdSense policies */}
+      {/* Editorial content before ad - REQUIRED for good user experience */}
       {editorialContent && (
         <div className="editorial-content mb-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border-l-4 border-blue-500">
           <div className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -42,17 +50,17 @@ export function AdBanner({
         </div>
       )}
       
-      {/* AdSense Ad Unit - Properly configured */}
+      {/* Adsterra Ad Unit */}
       <div className="ad-container text-center my-8">
-        <ins 
+        <div 
           ref={adRef}
-          className="adsbygoogle"
-          style={style}
-          data-ad-client="ca-pub-4789090074866563"
-          data-ad-slot={slot}
-          data-ad-format={format}
-          data-full-width-responsive={responsive.toString()}
-          data-ad-region="content"
+          className="adsterra-banner"
+          style={{ 
+            minHeight: height, 
+            width: responsive ? '100%' : width,
+            maxWidth: width,
+            margin: '0 auto'
+          }}
         />
       </div>
     </div>
@@ -63,8 +71,8 @@ export function AdBanner({
 export function HeaderAdBanner({ editorialContent }) {
   return (
     <AdBanner 
-      slot="1234567890" 
-      format="horizontal"
+      height={90}
+      width={728}
       editorialContent={editorialContent}
       className="header-ad"
     />
@@ -74,8 +82,8 @@ export function HeaderAdBanner({ editorialContent }) {
 export function ContentAdBanner({ editorialContent }) {
   return (
     <AdBanner 
-      slot="2345678901" 
-      format="rectangle"
+      height={250}
+      width={300}
       editorialContent={editorialContent}
       className="content-ad"
     />
@@ -85,8 +93,8 @@ export function ContentAdBanner({ editorialContent }) {
 export function SidebarAdBanner({ editorialContent }) {
   return (
     <AdBanner 
-      slot="3456789012" 
-      format="vertical"
+      height={600}
+      width={160}
       editorialContent={editorialContent}
       className="sidebar-ad"
     />
@@ -96,8 +104,8 @@ export function SidebarAdBanner({ editorialContent }) {
 export function FooterAdBanner({ editorialContent }) {
   return (
     <AdBanner 
-      slot="4567890123" 
-      format="horizontal"
+      height={90}
+      width={728}
       editorialContent={editorialContent}
       className="footer-ad"
     />

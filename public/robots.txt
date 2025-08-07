@@ -55,5 +55,5 @@ Allow: /*.svg$
 Allow: /*.ico$
 Allow: /*.webp$
 
-# Ads.txt para Google AdSense
-Allow: /ads.txt
+# Arquivos de publicidade Adsterra
+Allow: /adsterra-ads.txt
