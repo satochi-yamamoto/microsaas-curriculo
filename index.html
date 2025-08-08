@@ -188,15 +188,40 @@
     
     <!-- Adsterra Banner Configuration -->
     <script type="text/javascript">
-      atOptions = {
-        'key' : '594094ec53033d648141c0b5a324c0e9',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
+      // Global Adsterra configuration
+      window.adsLoaded = false;
+      
+      // Initialize multiple ad configurations
+      window.initAdsterra = function() {
+        if (window.adsLoaded) return;
+        window.adsLoaded = true;
+        
+        // Configuration for main banner (250x300)
+        window.atOptions_main = {
+          'key' : '594094ec53033d648141c0b5a324c0e9',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+        
+        // Configuration for sidebar banner (300x160)
+        window.atOptions_sidebar = {
+          'key' : 'e2c5596483e45bb50f598c4311ecf816',
+          'format' : 'iframe',
+          'height' : 300,
+          'width' : 160,
+          'params' : {}
+        };
       };
+      
+      // Initialize on DOM load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', window.initAdsterra);
+      } else {
+        window.initAdsterra();
+      }
     </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/594094ec53033d648141c0b5a324c0e9/invoke.js"></script>
     
     <title>Gerador de Currículos com IA Grátis | Crie CV Profissional para Tecnologia</title>
   </head>

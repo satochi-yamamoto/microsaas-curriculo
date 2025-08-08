@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/contexts/SupabaseAuthContext';
-import { useAdsterra } from '@/components/AdsterraBanner';
+import { useAdsterra } from '@/hooks/useAdsterra';
 import Header from '@/components/Header';
 import CookieBanner from '@/components/CookieBanner';
 import Footer from '@/components/Footer';

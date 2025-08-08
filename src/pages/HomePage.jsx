@@ -6,7 +6,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { TagInput } from '@/components/TagInput';
-import { AdsterraBanner } from '@/components/AdsterraBanner';
+import { 
+  ContentAdBanner, 
+  SidebarAdBanner, 
+  NativeAdBanner, 
+  PopunderAdBanner 
+} from '@/components/AdBanner';
 import { SEOHead, websiteSchema, webApplicationSchema } from '@/components/SEOHead';
 import { useToast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
@@ -293,12 +298,12 @@ O currículo deve incluir as seguintes seções:
           </motion.div>
 
           {/* Primeiro anúncio Adsterra com conteúdo editorial robusto */}
-          <AdsterraBanner 
-            height={250}
-            width={300}
-            className="my-8"
-            editorialContent="💡 Dica de especialistas em recrutamento: Currículos personalizados para cada vaga podem aumentar em até 60% suas chances de conseguir uma entrevista. Nossa ferramenta de IA analisa as tendências atuais do mercado de tecnologia para criar conteúdo relevante e otimizado para sistemas ATS (Applicant Tracking Systems), garantindo que seu perfil seja encontrado pelos recrutadores. Estudos recentes mostram que 95% das empresas tech utilizam algum tipo de automação no processo seletivo."
+          <ContentAdBanner 
+            editorialContent="💡 Dica de especialistas em recrutamento: Currículos personalizados para cada vaga podem aumentar em até 60% suas chances de conseguir uma entrevista. Nossa ferramenta de IA analiza as tendências atuais do mercado de tecnologia para criar conteúdo relevante e otimizado para sistemas ATS (Applicant Tracking Systems), garantindo que seu perfil seja encontrado pelos recrutadores. Estudos recentes mostram que 95% das empresas tech utilizam algum tipo de automação no processo seletivo."
           />
+
+          {/* Pop-under ad (invisible) */}
+          <PopunderAdBanner />
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="glass-effect rounded-2xl p-8 mb-8">
             <form onSubmit={handleSubmit} className="space-y-8">
@@ -397,11 +402,23 @@ O currículo deve incluir as seguintes seções:
           </motion.div>
 
           {/* Segundo anúncio Adsterra com conteúdo editorial extenso */}
-          <AdsterraBanner 
-            height={250}
-            width={300}
-            className="my-12"
-            editorialContent="🚀 Dados do mercado de trabalho em tecnologia: Profissionais com currículos otimizados para ATS (Applicant Tracking Systems) têm 300% mais chances de serem chamados para entrevistas. Nossa tecnologia incorpora algoritmos avançados que garantem compatibilidade com os principais sistemas de recrutamento utilizados por empresas como Google, Microsoft, Amazon e startups inovadoras. Além disso, análises de RH mostram que currículos bem estruturados reduzem em 40% o tempo de processo seletivo, beneficiando tanto candidatos quanto recrutadores. Investir em um currículo profissional é investir na sua carreira."
+          <div className="flex flex-col lg:flex-row gap-8 my-12">
+            <div className="flex-1">
+              <ContentAdBanner 
+                editorialContent="🚀 Dados do mercado de trabalho em tecnologia: Profissionais com currículos otimizados para ATS (Applicant Tracking Systems) têm 300% mais chances de serem chamados para entrevistas. Nossa tecnologia incorpora algoritmos avançados que garantem compatibilidade com os principais sistemas de recrutamento utilizados por empresas como Google, Microsoft, Amazon e startups inovadoras. Além disso, análises de RH mostram que currículos bem estruturados reduzem em 40% o tempo de processo seletivo, beneficiando tanto candidatos quanto recrutadores. Investir em um currículo profissional é investir na sua carreira."
+              />
+            </div>
+            <div className="lg:w-48">
+              <SidebarAdBanner 
+                editorialContent="📊 Estatísticas de recrutamento mostram que 87% dos recrutadores usam LinkedIn para encontrar candidatos, mas 92% ainda preferem receber currículos em PDF bem formatados."
+              />
+            </div>
+          </div>
+
+          {/* Native ad integration */}
+          <NativeAdBanner 
+            editorialContent="💼 Mercado de trabalho: Desenvolvedores especializados em IA e Machine Learning têm aumento salarial médio de 25% ao ano. Destaque suas competências técnicas com nosso gerador."
+            className="my-8"
           />
 
           {/* Conteúdo editorial adicional sobre tendências do mercado */}
