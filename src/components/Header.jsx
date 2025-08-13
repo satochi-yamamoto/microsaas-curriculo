@@ -9,13 +9,6 @@ function Header() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
-  // Prefetch likely navigation targets - temporarily disabled for troubleshooting
-  // usePrefetch(prefetchLoginPage, !user);
-  // usePrefetch(prefetchRegisterPage, !user);
-  // usePrefetch(prefetchPricingPage);
-  // usePrefetch(prefetchAccountPage, !!user);
-  // usePrefetch(prefetchHistoryPage, !!user);
-
   const handleLogout = async () => {
     await signOut();
     navigate('/');
