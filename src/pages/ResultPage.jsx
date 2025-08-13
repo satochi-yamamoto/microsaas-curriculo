@@ -8,6 +8,7 @@ import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { supabase } from '@/lib/customSupabaseClient';
 import { Download, CheckCircle, ArrowLeft, FileText } from 'lucide-react';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import html2pdf from 'html2pdf.js';
 
 // Lazy load ResumePreview component
 const ResumePreview = React.lazy(() => import('@/components/ResumePreview').then(module => ({ default: module.ResumePreview })));
@@ -48,14 +49,53 @@ function ResultPage() {
     fetchProfile();
   }, [navigate, user]);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    const element = document.getElementById('resume-to-print');
+    if (!element) {
+      toast({
+        variant: "destructive",
+        title: "Erro ao gerar PDF",
+        description: "Elemento do currículo não encontrado."
+      });
+      return;
+    }
+
     toast({
-      title: "Preparando para impressão...",
-      description: "Seu currículo será aberto na janela de impressão para salvar como PDF."
+      title: "Gerando PDF...",
+      description: "Seu currículo está sendo processado para download."
     });
-    setTimeout(() => {
-      window.print();
-    }, 500);
+
+    try {
+      const opt = {
+        margin: [10, 15, 10, 15], // top, right, bottom, left in mm
+        filename: `curriculo-${curriculoData.nomeCompleto.replace(/\s+/g, '-').toLowerCase()}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          letterRendering: true
+        },
+        jsPDF: { 
+          unit: 'mm', 
+          format: 'a4', 
+          orientation: 'portrait' 
+        }
+      };
+
+      await html2pdf().set(opt).from(element).save();
+      
+      toast({
+        title: "PDF gerado com sucesso!",
+        description: "O download do seu currículo foi iniciado."
+      });
+    } catch (error) {
+      console.error('Erro ao gerar PDF:', error);
+      toast({
+        variant: "destructive",
+        title: "Erro ao gerar PDF",
+        description: "Ocorreu um erro ao gerar o PDF. Tente novamente."
+      });
+    }
   };
 
   const handleNewCurriculo = () => {

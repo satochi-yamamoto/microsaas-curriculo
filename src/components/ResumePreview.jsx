@@ -17,12 +17,12 @@ const parseMarkdownToJsx = (markdown) => {
   lines.forEach((line, index) => {
     if (line.startsWith('### ')) {
       flushList();
-      elements.push(<h3 key={index} className="text-xl font-bold mt-6 mb-3 text-blue-300 border-b-2 border-blue-300/30 pb-2">{line.substring(4)}</h3>);
+      elements.push(<h3 key={index} className="text-xl font-bold mt-4 mb-2 text-blue-300 border-b-2 border-blue-300/30 pb-1">{line.substring(4)}</h3>);
       return;
     }
     if (line.startsWith('## ')) {
       flushList();
-      elements.push(<h2 key={index} className="text-2xl font-bold mt-8 mb-4 text-blue-200">{line.substring(3)}</h2>);
+      elements.push(<h2 key={index} className="text-2xl font-bold mt-6 mb-3 text-blue-200">{line.substring(3)}</h2>);
       return;
     }
     if (line.startsWith('* ')) {
@@ -52,8 +52,8 @@ export function ResumePreview({ data }) {
   const { nomeCompleto, cargoDesejado, email, telefone, generatedContent } = data;
 
   return (
-    <div id="resume-to-print" className="bg-white/5 rounded-lg p-8 text-left mt-8">
-      <div className="text-center mb-4">
+    <div id="resume-to-print" className="bg-white/5 rounded-lg p-6 text-left mt-6">
+      <div className="text-center mb-3">
         <h1 className="text-4xl font-bold text-white">{nomeCompleto}</h1>
         <h2 className="text-2xl text-blue-300">{cargoDesejado}</h2>
         {(email || telefone) && (
