@@ -110,142 +110,33 @@
     <!-- Resource hints for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.highperformanceformat.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
     <!-- Google Fonts optimization -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
-    
-    <!-- Critical CSS will be inlined by Vite -->
-    
-    <!-- Critical CSS will be inlined by Vite -->
     <style>
-      /* Critical loading styles */
-      .loading-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        flex-direction: column;
-        padding: 20px;
+      /* Performance optimization */
+      * {
+        box-sizing: border-box;
       }
-      .loading-content {
-        text-align: center;
-        max-width: 400px;
+      
+      html {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
-      .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #374151;
-        border-top: 3px solid #2563eb;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 20px;
-      }
-      .loading-title {
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 10px;
-      }
-      .loading-description {
-        color: #9CA3AF;
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 20px;
-      }
-      .loading-tip {
-        background: rgba(30, 41, 59, 0.5);
-        border-left: 4px solid #3B82F6;
-        padding: 12px;
-        border-radius: 6px;
-        text-align: left;
-      }
-      .loading-tip-title {
-        color: #60A5FA;
-        font-weight: 600;
-        font-size: 14px;
-        margin-bottom: 6px;
-      }
-      .loading-tip-text {
-        color: #D1D5DB;
-        font-size: 12px;
-        line-height: 1.4;
-      }
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       }
     </style>
-    
-    <!-- Adsterra Banner Configuration -->
-    <script type="text/javascript">
-      // Global Adsterra configuration
-      window.adsLoaded = false;
-      
-      // Initialize multiple ad configurations
-      window.initAdsterra = function() {
-        if (window.adsLoaded) return;
-        window.adsLoaded = true;
-        
-        // Configuration for main banner (250x300)
-        window.atOptions_main = {
-          'key' : '594094ec53033d648141c0b5a324c0e9',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
-        
-        // Configuration for sidebar banner (300x160)
-        window.atOptions_sidebar = {
-          'key' : 'e2c5596483e45bb50f598c4311ecf816',
-          'format' : 'iframe',
-          'height' : 300,
-          'width' : 160,
-          'params' : {}
-        };
-      };
-      
-      // Initialize on DOM load
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', window.initAdsterra);
-      } else {
-        window.initAdsterra();
-      }
-    </script>
-    
-    <title>Gerador de Currículos com IA Grátis | Crie CV Profissional para Tecnologia</title>
   </head>
   <body>
-    <div id="root">
-      <!-- Enhanced loading fallback with editorial content -->
-      <div class="loading-wrapper">
-        <div class="loading-content">
-          <div class="loading-spinner"></div>
-          <div class="loading-title">Carregando Gerador de Currículos</div>
-          <div class="loading-description">
-            Preparando nossa ferramenta de IA para criar seu currículo profissional. 
-            Em instantes você terá acesso à melhor tecnologia para destacar suas habilidades técnicas.
-          </div>
-          <div class="loading-tip">
-            <div class="loading-tip-title">💡 Dica profissional</div>
-            <div class="loading-tip-text">
-              Currículos otimizados para ATS (Applicant Tracking Systems) têm 3x mais chances de serem selecionados. 
-              Nossa IA garante formatação adequada para esses sistemas.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

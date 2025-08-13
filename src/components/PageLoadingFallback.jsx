@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import LoadingSpinner from './LoadingSpinner';
 
-const PageLoadingFallback = () => {
+const PageLoadingFallback = memo(() => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <div className="text-center max-w-md mx-auto px-6">
@@ -25,6 +25,8 @@ const PageLoadingFallback = () => {
       </div>
     </div>
   );
-};
+});
+
+PageLoadingFallback.displayName = 'PageLoadingFallback';
 
 export default PageLoadingFallback;

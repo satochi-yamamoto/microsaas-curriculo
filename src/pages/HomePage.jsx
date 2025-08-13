@@ -6,12 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { TagInput } from '@/components/TagInput';
-import { 
-  ContentAdBanner, 
-  SidebarAdBanner, 
-  NativeAdBanner, 
-  PopunderAdBanner 
-} from '@/components/AdBanner';
 import { SEOHead, websiteSchema, webApplicationSchema } from '@/components/SEOHead';
 import { useToast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
@@ -226,10 +220,10 @@ O currículo deve incluir as seguintes seções:
         jsonLd={combinedSchema}
       />
 
-      <div className="min-h-screen py-8 px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen py-6 px-4">
+        <div className="max-w-4xl mx-auto space-y-8">
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center mb-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center">
             <div className="flex justify-center mb-6">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-xl opacity-30 animate-pulse"></div>
@@ -243,7 +237,7 @@ O currículo deve incluir as seguintes seções:
               <span className="text-white">com IA</span>
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
               Crie currículos profissionais para área de tecnologia usando inteligência artificial. 
               Rápido, moderno e otimizado para recrutadores tech.
             </p>
@@ -269,7 +263,7 @@ O currículo deve incluir as seguintes seções:
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="bg-slate-800/50 rounded-lg p-6 mb-8 text-left"
+            className="bg-slate-800/50 rounded-lg p-6 text-left"
           >
             <h2 className="text-2xl font-semibold text-white mb-4">Como criar um currículo que se destaca no mercado de tecnologia</h2>
             <div className="prose prose-invert max-w-none">
@@ -297,15 +291,7 @@ O currículo deve incluir as seguintes seções:
             </div>
           </motion.div>
 
-          {/* Primeiro anúncio Adsterra com conteúdo editorial robusto */}
-          <ContentAdBanner 
-            editorialContent="💡 Dica de especialistas em recrutamento: Currículos personalizados para cada vaga podem aumentar em até 60% suas chances de conseguir uma entrevista. Nossa ferramenta de IA analiza as tendências atuais do mercado de tecnologia para criar conteúdo relevante e otimizado para sistemas ATS (Applicant Tracking Systems), garantindo que seu perfil seja encontrado pelos recrutadores. Estudos recentes mostram que 95% das empresas tech utilizam algum tipo de automação no processo seletivo."
-          />
-
-          {/* Pop-under ad (invisible) */}
-          <PopunderAdBanner />
-
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="glass-effect rounded-2xl p-8 mb-8">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="glass-effect rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -401,32 +387,12 @@ O currículo deve incluir as seguintes seções:
             </div>
           </motion.div>
 
-          {/* Segundo anúncio Adsterra com conteúdo editorial extenso */}
-          <div className="flex flex-col lg:flex-row gap-8 my-12">
-            <div className="flex-1">
-              <ContentAdBanner 
-                editorialContent="🚀 Dados do mercado de trabalho em tecnologia: Profissionais com currículos otimizados para ATS (Applicant Tracking Systems) têm 300% mais chances de serem chamados para entrevistas. Nossa tecnologia incorpora algoritmos avançados que garantem compatibilidade com os principais sistemas de recrutamento utilizados por empresas como Google, Microsoft, Amazon e startups inovadoras. Além disso, análises de RH mostram que currículos bem estruturados reduzem em 40% o tempo de processo seletivo, beneficiando tanto candidatos quanto recrutadores. Investir em um currículo profissional é investir na sua carreira."
-              />
-            </div>
-            <div className="lg:w-48">
-              <SidebarAdBanner 
-                editorialContent="📊 Estatísticas de recrutamento mostram que 87% dos recrutadores usam LinkedIn para encontrar candidatos, mas 92% ainda preferem receber currículos em PDF bem formatados."
-              />
-            </div>
-          </div>
-
-          {/* Native ad integration */}
-          <NativeAdBanner 
-            editorialContent="💼 Mercado de trabalho: Desenvolvedores especializados em IA e Machine Learning têm aumento salarial médio de 25% ao ano. Destaque suas competências técnicas com nosso gerador."
-            className="my-8"
-          />
-
           {/* Conteúdo editorial adicional sobre tendências do mercado */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg p-8 mb-8"
+            className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg p-8"
           >
             <h2 className="text-2xl font-semibold text-white mb-6 text-center">Tendências do Mercado de Tecnologia em 2024</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

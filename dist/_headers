@@ -1,11 +1,14 @@
-# Security Policy
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.highperformanceformat.com https://pl27372989.profitableratecpm.com https://pl27372886.profitableratecpm.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.highperformanceformat.com https://profitableratecpm.com; frame-src https://www.highperformanceformat.com https://profitableratecpm.com;
+# Security Policy - Optimized for Performance
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src 'self';
 
 # HTTPS Redirect
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-# Adsterra Configuration
-X-Ads-Txt-Path: /ads.txt
+# Performance Headers
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
 
 # SEO Headers
 X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1

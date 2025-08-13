@@ -54,6 +54,3 @@ Allow: /*.gif$
 Allow: /*.svg$
 Allow: /*.ico$
 Allow: /*.webp$
-
-# Arquivos de publicidade Adsterra
-Allow: /adsterra-ads.txt

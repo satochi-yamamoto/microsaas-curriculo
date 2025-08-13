@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { AdBanner } from '@/components/AdBanner';
 import { useToast } from '@/components/ui/use-toast';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { supabase } from '@/lib/customSupabaseClient';
@@ -75,8 +74,8 @@ function ResultPage() {
         <meta name="description" content="Seu currículo profissional foi gerado com sucesso. Faça o download agora mesmo!" />
       </Helmet>
 
-      <div className="min-h-screen py-8 px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen py-6 px-4">
+        <div className="max-w-4xl mx-auto space-y-8">
           
 
           <div className="grid gap-8">
@@ -103,7 +102,7 @@ function ResultPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mb-8 text-center"
+                  className="text-center"
                 >
                   <h1 className="text-4xl md:text-5xl font-bold mb-4">
                     <span className="gradient-text">Currículo Gerado</span>
@@ -223,13 +222,6 @@ function ResultPage() {
               </div>
             </div>
           </motion.div>
-
-          {/* Anúncio na página de resultado */}
-          <AdBanner 
-            slot="1122334455"
-            editorialContent="💼 Você sabia? Currículos com design profissional têm 40% mais chances de serem lidos completamente pelos recrutadores. Continue investindo no seu desenvolvimento profissional!"
-            className="my-8"
-          />
         </div>
 
        

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ContentAdBanner, FooterAdBanner } from '@/components/AdBanner';
 import { SEOHead, articleSchema } from '@/components/SEOHead';
 import { TechTrends, ResumeOptimizationGuide } from '@/components/EditorialContent';
 import { useNavigate } from 'react-router-dom';
@@ -83,20 +82,10 @@ function BlogPage() {
             </div>
           </motion.div>
 
-          {/* Primeiro anúncio com análise de mercado */}
-          <ContentAdBanner 
-            editorialContent="📈 Análise do mercado de trabalho em tecnologia: O setor registrou crescimento excepcional de 15% em contratações nos últimos 12 meses, segundo dados do CAGED e pesquisas setoriais. Este crescimento é impulsionado pela transformação digital acelerada, expansão do trabalho remoto e demanda crescente por soluções tecnológicas. Profissionais com currículos otimizados e bem estruturados têm demonstrado 300% mais oportunidades de carreira, especialmente em áreas como desenvolvimento de software, ciência de dados, cybersegurança e inteligência artificial. O investimento em um currículo profissional representa um ROI significativo na aceleração da carreira tech."
-          />
-
           {/* Artigos principais com conteúdo editorial robusto */}
           <TechTrends />
           
           <ResumeOptimizationGuide />
-
-          {/* Segundo anúncio com dados de especialização */}
-          <ContentAdBanner 
-            editorialContent="🎯 Insights de especialistas em recrutamento tech: Pesquisa realizada com mais de 500 profissionais de RH em empresas de tecnologia revela que 67% dos candidatos que conseguem posições sênior investem regularmente em atualização de currículo e desenvolvimento de habilidades. Esta tendência é ainda mais pronunciada em áreas especializadas como Machine Learning, DevOps e Arquitetura de Software. Empresas como Google, Microsoft e Meta priorizam candidatos que demonstram evolução contínua em seus currículos. Manter-se competitivo no mercado tech exige não apenas habilidades técnicas atualizadas, mas também a capacidade de comunicá-las efetivamente através de um currículo bem estruturado."
-          />
 
           {/* Seção de estatísticas */}
           <motion.div 
