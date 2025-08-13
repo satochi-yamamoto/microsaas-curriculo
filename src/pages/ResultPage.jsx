@@ -29,25 +29,54 @@ function ResultPage() {
   useEffect(() => {
     const data = localStorage.getItem('curriculoData');
     if (!data) {
-      navigate('/');
+      toast({
+        variant: "destructive",
+        title: "Dados não encontrados",
+        description: "Redirecionando para a página inicial..."
+      });
+      setTimeout(() => {
+        navigate('/', { replace: true });
+      }, 2000);
       return;
     }
-    setCurriculoData(JSON.parse(data));
+    
+    try {
+      const parsedData = JSON.parse(data);
+      if (!parsedData.nomeCompleto || !parsedData.generatedContent) {
+        throw new Error('Dados do currículo incompletos');
+      }
+      setCurriculoData(parsedData);
+    } catch (error) {
+      console.error('Erro ao carregar dados do currículo:', error);
+      toast({
+        variant: "destructive",
+        title: "Erro nos dados",
+        description: "Dados corrompidos. Redirecionando para a página inicial..."
+      });
+      setTimeout(() => {
+        navigate('/', { replace: true });
+      }, 2000);
+      return;
+    }
 
     const fetchProfile = async () => {
       if (user) {
-        const { data, error } = await supabase
-          .from('profiles')
-          .select('is_subscriber')
-          .eq('id', user.id)
-          .single();
-        if (!error && data) {
-          setIsSubscriber(data.is_subscriber);
+        try {
+          const { data, error } = await supabase
+            .from('profiles')
+            .select('is_subscriber')
+            .eq('id', user.id)
+            .single();
+          if (!error && data) {
+            setIsSubscriber(data.is_subscriber);
+          }
+        } catch (error) {
+          console.error('Erro ao buscar perfil:', error);
         }
       }
     };
     fetchProfile();
-  }, [navigate, user]);
+  }, [navigate, user, toast]);
 
   const handleDownload = async () => {
     const element = document.getElementById('resume-to-print');

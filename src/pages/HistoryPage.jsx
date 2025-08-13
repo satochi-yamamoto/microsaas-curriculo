@@ -5,39 +5,65 @@ import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { supabase } from '@/lib/customSupabaseClient';
 import { ResumePreview } from '@/components/ResumePreview';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 
 function HistoryPage() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [curriculos, setCurriculos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCurriculos = async () => {
-      if (!user) {
-        setLoading(false);
-        return;
-      }
-      const { data, error } = await supabase
-        .from('curriculos')
-        .select('id, data, created_at')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false });
+    if (!user) {
+      toast({
+        variant: "destructive",
+        title: "Acesso negado",
+        description: "Você precisa fazer login para acessar seu histórico."
+      });
+      setTimeout(() => {
+        navigate('/login', { replace: true });
+      }, 2000);
+      return;
+    }
 
-      if (error) {
-        console.error('Erro ao buscar currículos:', error);
-      } else {
-        // Parse stored JSON string if necessary
-        const parsed = data.map(item => ({
-          ...item,
-          data: typeof item.data === 'string' ? JSON.parse(item.data) : item.data
-        }));
-        setCurriculos(parsed);
+    const fetchCurriculos = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('curriculos')
+          .select('id, data, created_at')
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Erro ao buscar currículos:', error);
+          toast({
+            variant: "destructive",
+            title: "Erro ao carregar histórico",
+            description: "Não foi possível carregar seus currículos salvos."
+          });
+        } else {
+          // Parse stored JSON string if necessary
+          const parsed = data.map(item => ({
+            ...item,
+            data: typeof item.data === 'string' ? JSON.parse(item.data) : item.data
+          }));
+          setCurriculos(parsed);
+        }
+      } catch (error) {
+        console.error('Erro inesperado:', error);
+        toast({
+          variant: "destructive",
+          title: "Erro inesperado",
+          description: "Ocorreu um erro ao carregar a página."
+        });
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
+    
     fetchCurriculos();
-  }, [user]);
+  }, [user, navigate, toast]);
 
   if (!user) {
     return (

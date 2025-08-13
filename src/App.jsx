@@ -19,6 +19,7 @@ import TermsOfService from '@/pages/TermsOfService';
 import HistoryPage from '@/pages/HistoryPage';
 import AccountPage from '@/pages/AccountPage';
 import BlogPage from '@/pages/BlogPage';
+import NotFoundPage from '@/pages/NotFoundPage';
 
 function App() {
   // Otimizar recursos para melhor performance
@@ -43,6 +44,8 @@ function App() {
                 <Route path="/dicas" element={<BlogPage />} />
                 <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
                 <Route path="/termos-de-uso" element={<TermsOfService />} />
+                {/* Rota catch-all para 404 */}
+                <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </main>
             <Footer />

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -9,15 +10,29 @@ import { useToast } from '@/components/ui/use-toast';
 function AccountPage() {
   const { user, updatePassword } = useAuth();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (!user) {
+      toast({
+        variant: "destructive",
+        title: "Acesso negado",
+        description: "Você precisa fazer login para acessar sua conta."
+      });
+      setTimeout(() => {
+        navigate('/login', { replace: true });
+      }, 2000);
+    }
+  }, [user, navigate, toast]);
+
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
-        <p className="text-gray-300">É necessário estar logado para acessar esta página.</p>
+        <p className="text-gray-300">Redirecionando para o login...</p>
       </div>
     );
   }
