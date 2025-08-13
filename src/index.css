@@ -75,6 +75,18 @@ body {
 }
 
 @media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   body * {
     visibility: hidden;
   }
@@ -89,80 +101,102 @@ body {
     top: 0;
     width: 100%;
     margin: 0;
-    padding: 10px 20px;
+    padding: 20px;
     border: none;
     box-shadow: none;
     background: white !important;
-    color: #1a1a1a !important;
+    border-radius: 0 !important;
     page-break-inside: avoid;
   }
 
-  #resume-to-print * {
-    color: #1a1a1a !important;
-  }
-
+  /* Preservar cores do site no PDF */
   #resume-to-print .resume-title {
-    color: #1a1a1a !important;
-    font-size: 2rem !important;
+    color: #1a202c !important;
+    font-size: 2.25rem !important;
     margin-bottom: 0.5rem !important;
+    font-weight: bold !important;
+    text-align: center !important;
   }
 
   #resume-to-print .resume-subtitle {
-    color: #2d2d2d !important;
+    color: #3182ce !important;
     font-size: 1.5rem !important;
     margin-bottom: 0.5rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
   }
 
   #resume-to-print .resume-contact {
-    color: #1a1a1a !important;
-    margin-bottom: 1rem !important;
+    color: #4a5568 !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1rem !important;
+    text-align: center !important;
   }
 
-  #resume-to-print .resume-content * {
-    color: #1a1a1a !important;
+  /* Títulos das seções com cores do site */
+  #resume-to-print h2 {
+    color: #1d4ed8 !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    page-break-after: avoid;
   }
 
+  #resume-to-print h3 {
+    color: #2563eb !important;
+    font-size: 1.25rem !important;
+    font-weight: bold !important;
+    border-bottom: 2px solid #2563eb !important;
+    padding-bottom: 4px !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+    page-break-after: avoid;
+  }
+
+  /* Texto do conteúdo */
   #resume-to-print p {
-    margin-bottom: 0.3rem;
-    line-height: 1.4;
+    color: #374151 !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.5 !important;
     page-break-inside: avoid;
-    color: #1a1a1a !important;
+    font-size: 0.95rem !important;
   }
 
   #resume-to-print ul {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem !important;
+    padding-left: 1.5rem !important;
   }
 
   #resume-to-print li {
-    margin-bottom: 0.1rem;
-    line-height: 1.3;
-    color: #1a1a1a !important;
+    color: #374151 !important;
+    margin-bottom: 0.25rem !important;
+    line-height: 1.4 !important;
+    font-size: 0.9rem !important;
   }
 
-  #resume-to-print h1, #resume-to-print h2, #resume-to-print h3, #resume-to-print p, #resume-to-print li, #resume-to-print strong {
-    color: black !important;
+  #resume-to-print strong {
+    color: #1f2937 !important;
+    font-weight: 600 !important;
   }
-  
-  #resume-to-print h1 {
-    font-size: 2.5rem;
+
+  /* Garantir que todos os elementos tenham as cores corretas */
+  #resume-to-print .resume-content h2 {
+    color: #2563eb !important;
   }
-  
-  #resume-to-print h2 {
-    font-size: 1.5rem;
-    color: #2d2d2d !important;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    page-break-after: avoid;
+
+  #resume-to-print .resume-content h3 {
+    color: #3182ce !important;
+    border-bottom-color: #3182ce !important;
   }
-  
-  #resume-to-print h3 {
-    font-size: 1.25rem;
-    border-bottom: 2px solid #666;
-    padding-bottom: 2px;
-    margin-top: 0.8rem;
-    margin-bottom: 0.5rem;
-    color: #2d2d2d !important;
-    page-break-after: avoid;
+
+  #resume-to-print .resume-content p,
+  #resume-to-print .resume-content li {
+    color: #374151 !important;
+  }
+
+  #resume-to-print .resume-content strong {
+    color: #1f2937 !important;
   }
 
   @page {

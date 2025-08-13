@@ -98,21 +98,33 @@ function ResultPage() {
       const opt = {
         margin: [10, 15, 10, 15], // top, right, bottom, left in mm
         filename: `curriculo-${curriculoData.nomeCompleto.replace(/\s+/g, '-').toLowerCase()}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { 
+          type: 'jpeg', 
+          quality: 0.98 
+        },
         html2canvas: { 
           scale: 2,
           useCORS: true,
           letterRendering: true,
           allowTaint: true,
           backgroundColor: '#ffffff',
-          logging: false
+          logging: false,
+          scrollX: 0,
+          scrollY: 0,
+          width: element.offsetWidth,
+          height: element.offsetHeight
         },
         jsPDF: { 
           unit: 'mm', 
           format: 'a4', 
-          orientation: 'portrait' 
+          orientation: 'portrait',
+          compress: true
         },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { 
+          mode: ['avoid-all', 'css', 'legacy'],
+          before: '.page-break-before',
+          after: '.page-break-after'
+        }
       };
 
       await html2pdf().set(opt).from(element).save();
